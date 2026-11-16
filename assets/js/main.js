@@ -156,6 +156,6 @@ document.getElementById("form").addEventListener("submit", e => {
 // photo : affiche les initiales si assets/img/photo.jpg est absent
 const photo = document.querySelector(".photo img");
 if (photo) {
-  const fallback = () => photo.replaceWith("ST");
+  const fallback = () => (photo.closest("picture") || photo).replaceWith("ST");
   if (photo.complete && photo.naturalWidth === 0) fallback(); else photo.addEventListener("error", fallback);
 }

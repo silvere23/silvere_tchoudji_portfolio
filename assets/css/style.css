@@ -134,7 +134,9 @@ section{padding:112px 0;position:relative}
 /* about */
 .about{display:grid;grid-template-columns:320px 1fr;gap:48px;align-items:start}
 .photo{aspect-ratio:1;letter-spacing:-.04em;border-radius:28px;overflow:hidden;border:1px solid var(--border);background:linear-gradient(135deg,rgba(106,94,237,.35),rgba(13,202,242,.2));display:grid;place-items:center;font-family:var(--display);font-size:5rem;font-weight:700}
-.photo img{width:100%;height:100%;object-fit:cover}
+.photo picture{display:block;width:100%;height:100%}
+.photo img{width:100%;height:100%;object-fit:cover;transition:transform .7s cubic-bezier(.16,1,.3,1)}
+.photo:hover img{transform:scale(1.04)}
 .facts{margin-top:18px;display:grid;gap:10px;font-size:.9rem;color:var(--muted)}
 .facts li{display:flex;gap:10px;align-items:center}
 .facts svg{width:16px;height:16px;color:var(--primary-2);flex:none}
