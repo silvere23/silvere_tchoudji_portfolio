@@ -32,6 +32,20 @@ document.querySelectorAll(".xp-head").forEach(btn => btn.addEventListener("click
   document.querySelectorAll(".xp").forEach(c => { c.classList.toggle("open", open && c === card); c.querySelector(".xp-head").setAttribute("aria-expanded", open && c === card); });
 }));
 
+// certifications : les cartes sont dupliquées pour que la bande boucle sans coupure
+(() => {
+  const track = document.querySelector("#certs .cert-track");
+  [...track.children].forEach(c => { const copy = c.cloneNode(true); copy.setAttribute("aria-hidden", "true"); copy.querySelectorAll("a").forEach(a => a.tabIndex = -1); track.appendChild(copy); });
+})();
+
+// expérience : le trait de la frise se remplit à mesure qu'on fait défiler la section
+(() => {
+  const list = document.getElementById("xp-list"); let tick = false;
+  const fill = () => { tick = false; const r = list.getBoundingClientRect(); list.style.setProperty("--p", Math.min(1, Math.max(0, (innerHeight * .62 - r.top) / r.height)).toFixed(3)); };
+  const ask = () => { if (!tick) { tick = true; requestAnimationFrame(fill); } };
+  addEventListener("scroll", ask, { passive: true }); addEventListener("resize", ask); fill();
+})();
+
 // projets : carrousel automatique, filtres par catégorie, bouton « voir plus »
 (() => {
   const DELAY = 5000;                                   // durée d'affichage d'un projet, en millisecondes
