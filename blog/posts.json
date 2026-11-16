@@ -1,0 +1,30 @@
+[
+  {
+    "slug": "durcir-ssh-linux",
+    "title": "Durcir SSH sur un serveur Linux en six étapes",
+    "date": "2026-11-16",
+    "tags": [
+      "Cybersécurité",
+      "Linux"
+    ],
+    "summary": "Clés, configuration, Fail2ban, pare-feu : six réglages simples qui bloquent la quasi-totalité des attaques automatisées contre SSH."
+  },
+  {
+    "slug": "bienvenue",
+    "title": "Bienvenue sur mon blog",
+    "date": "2026-11-16",
+    "tags": [
+      "Présentation"
+    ],
+    "summary": "Ce que tu trouveras ici : des notes sur le DevOps, le cloud et la cybersécurité, tirées de mon travail et de mes projets."
+  },
+  {
+    "slug": "modele-article",
+    "title": "Modèle d'article : toute la mise en forme disponible",
+    "date": "2026-11-15",
+    "tags": [
+      "Modèle"
+    ],
+    "summary": "Un article d'exemple à dupliquer : titres, listes, code, citation, tableau et image."
+  }
+]
