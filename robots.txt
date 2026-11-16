@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://silvere23.github.io/silvere_tchoudji_portfolio/sitemap.xml
