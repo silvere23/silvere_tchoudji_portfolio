@@ -62,6 +62,7 @@
 </header>
 
 <main id="view-home">
+<!-- Une section sur deux (À propos, Expérience, Certifications, Contact) porte la classe « band » : fond coloré pleine largeur -->
 <section class="hero" id="accueil">
   <canvas id="net" aria-hidden="true"></canvas>
   <!-- Pastilles flottantes sur les côtés (masquées sur petit écran) -->
@@ -97,7 +98,7 @@
   </div>
 </section>
 
-<section id="a-propos"><div class="wrap">
+<section id="a-propos" class="band"><div class="wrap">
   <div class="reveal"><p class="eyebrow lined">À propos</p><h2 class="title">L'infrastructure, <span class="grad">de la prod à l'interface</span></h2></div>
   <div class="about">
     <div class="reveal">
@@ -124,7 +125,7 @@
   <div class="card skill reveal" style="margin-top:20px"><h3><span class="ico-box"><svg class="ico" aria-hidden="true"><use href="#i-soft"/></svg></span>Soft skills</h3><div class="tags"><span class="tag">Créativité</span><span class="tag">Discipline</span><span class="tag">Esprit d'équipe</span><span class="tag">Résilience</span></div></div>
 </div></section>
 
-<section id="experience"><div class="wrap">
+<section id="experience" class="band"><div class="wrap">
   <div class="reveal"><p class="eyebrow lined">Expérience</p><h2 class="title">Parcours <span class="grad">professionnel</span></h2></div>
   <!-- Frise : le trait se remplit au défilement ; chaque carte se déplie au clic, la première est ouverte par défaut -->
   <div class="xp-list" id="xp-list">
@@ -489,7 +490,7 @@
   </div>
 </div></section>
 
-<section id="certifications">
+<section id="certifications" class="band">
   <div class="wrap reveal"><p class="eyebrow lined">Certifications</p><h2 class="title">Mes <span class="grad">certifications</span></h2></div>
   <!-- Bande qui défile en continu ; elle s'arrête au survol. Les cartes sont dupliquées par main.js pour boucler sans coupure. -->
   <div class="cert-marquee reveal" id="certs"><div class="cert-track">
@@ -505,9 +506,7 @@
   <div class="grid g2"><div class="card reveal"><div class="meta"><h3>Mastère Cybersécurité et Cloud Computing</h3><span class="when">2024 · 2026</span></div><p class="org">IPSSI, Lille · Bac+5</p><p style="color:var(--muted);font-size:.93rem">Formation en alternance. Projet de soutenance : ASR-SDN.</p></div><div class="card reveal"><div class="meta"><h3>Bachelor Architecture des Systèmes d'Information et DevOps</h3><span class="when">2023 · 2024</span></div><p class="org">École-IT, Valenciennes · Bac+3</p><p style="color:var(--muted);font-size:.93rem">Architecture des systèmes d'information et pratiques DevOps.</p></div></div>
 </div></section>
 
-<section id="contact">
-  <!-- Bande colorée sur toute la largeur de la page -->
-  <div class="band">
+<section id="contact" class="band">
     <div class="wrap contact">
       <div class="reveal">
         <p class="eyebrow lined">Contact</p>
@@ -530,7 +529,6 @@
         </form>
       </div>
     </div>
-  </div>
 </section>
 </main>
 
