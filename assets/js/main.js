@@ -18,13 +18,19 @@ const heroTitle = document.querySelector(".hero h1");
 requestAnimationFrame(() => requestAnimationFrame(() => heroTitle.classList.add("shown")));
 
 // cartes d'une même rangée : apparition en léger décalé
-document.querySelectorAll(".grid, .tl, .contact").forEach(g => [...g.children].forEach((el, i) => { if (el.classList.contains("reveal")) el.style.transitionDelay = (i % 3) * 90 + "ms"; }));
+document.querySelectorAll(".grid, .xp-list, .contact").forEach(g => [...g.children].forEach((el, i) => { if (el.classList.contains("reveal")) el.style.transitionDelay = (i % 3) * 90 + "ms"; }));
 
 // apparition au scroll + lien actif
 const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); const t = e.target.querySelector(".title"); if (t) t.classList.add("shown"); const el = e.target; setTimeout(() => { el.style.transitionDelay = ""; }, 1100); } }), { threshold: .12 });
 document.querySelectorAll(".reveal").forEach(el => io.observe(el));
 const spy = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) links.querySelectorAll("a").forEach(a => a.classList.toggle("active", a.getAttribute("href") === "#" + e.target.id)); }), { rootMargin: "-45% 0px -50% 0px" });
 document.querySelectorAll("section[id]").forEach(s => spy.observe(s));
+
+// expérience : un clic déplie ou replie une carte, une seule ouverte à la fois
+document.querySelectorAll(".xp-head").forEach(btn => btn.addEventListener("click", () => {
+  const card = btn.closest(".xp"), open = !card.classList.contains("open");
+  document.querySelectorAll(".xp").forEach(c => { c.classList.toggle("open", open && c === card); c.querySelector(".xp-head").setAttribute("aria-expanded", open && c === card); });
+}));
 
 // projets : carrousel automatique, filtres par catégorie, bouton « voir plus »
 (() => {
