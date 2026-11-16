@@ -178,6 +178,10 @@ section{padding:112px 0;position:relative}
 .meta{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:6px}
 .meta h3{font-size:1.2rem}
 .when{font-size:.78rem;color:var(--accent);padding:4px 12px;border-radius:99px;background:rgba(13,202,242,.08);border:1px solid rgba(13,202,242,.25);white-space:nowrap;height:fit-content}
+.when.ok{color:var(--green);background:rgba(52,211,153,.08);border-color:rgba(52,211,153,.3)}
+.cert-link{display:inline-flex;align-items:center;gap:6px;margin-top:14px;font-size:.85rem;font-weight:600;color:var(--primary-2);transition:gap .2s}
+.cert-link:hover{gap:10px}
+.cert-link svg{width:14px;height:14px}
 .org{color:var(--primary-2);font-weight:500;font-size:.95rem;margin-bottom:14px}
 
 /* projets : grandes cartes alternées (texte | visuel), puis grille de cartes plus petites */
