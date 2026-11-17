@@ -455,3 +455,9 @@ footer .wrap{display:flex;justify-content:space-between;align-items:center;gap:1
 }
 
 @media (max-width:1180px){.chip{display:none}}
+
+/* Texte justifié : longs paragraphes uniquement, sur écrans assez larges */
+@media (min-width:720px){
+  .about p,.prose>p{text-align:justify;hyphens:auto;-webkit-hyphens:auto;text-wrap:pretty}
+  .about p strong{white-space:nowrap}
+}
