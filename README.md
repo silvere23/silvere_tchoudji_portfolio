@@ -144,6 +144,8 @@ Puis ouvrir http://localhost:8000.
 
 ## Mettre en ligne
 
+Avant chaque mise en ligne, lancer `python tools/versionner.py` : il ajoute un numéro de version aux fichiers CSS et JS pour que les visiteurs reçoivent tout de suite la nouvelle version au lieu de l'ancienne gardée en cache.
+
 Le site est servi par GitHub Pages depuis la branche `main` de ce dépôt.
 
 1. Le dépôt doit être **public** (Settings > General > Danger Zone > Change visibility). Avec un compte GitHub gratuit, Pages ne fonctionne pas sur un dépôt privé.
