@@ -157,7 +157,7 @@ document.getElementById("form").addEventListener("submit", e => {
 const projectCount = document.querySelector("[data-project-count]");
 if (projectCount) {
   const n = document.querySelectorAll("#all > article").length;
-  if (n) projectCount.textContent = n + "+";
+  if (n) projectCount.textContent = "+" + n;
 }
 
 // photo : affiche les initiales si assets/img/photo.jpg est absent
