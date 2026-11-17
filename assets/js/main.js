@@ -153,6 +153,13 @@ document.getElementById("form").addEventListener("submit", e => {
   }, 4000);
 })();
 
+// compteur de projets : calculé à partir de la liste complète, se met à jour tout seul quand un projet est ajouté
+const projectCount = document.querySelector("[data-project-count]");
+if (projectCount) {
+  const n = document.querySelectorAll("#all > article").length;
+  if (n) projectCount.textContent = n + "+";
+}
+
 // photo : affiche les initiales si assets/img/photo.jpg est absent
 const photo = document.querySelector(".photo img");
 if (photo) {
