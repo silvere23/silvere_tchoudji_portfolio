@@ -38,6 +38,9 @@ document.querySelectorAll(".xp-head").forEach(btn => btn.addEventListener("click
   [...track.children].forEach(c => { const copy = c.cloneNode(true); copy.setAttribute("aria-hidden", "true"); copy.querySelectorAll("a").forEach(a => a.tabIndex = -1); track.appendChild(copy); });
 })();
 
+// outils : chaque rangée est dupliquée pour boucler sans coupure
+document.querySelectorAll(".tool-track").forEach(t => [...t.children].forEach(c => { const copy = c.cloneNode(true); copy.setAttribute("aria-hidden", "true"); t.appendChild(copy); }));
+
 // expérience : le trait de la frise se remplit à mesure qu'on fait défiler la section
 (() => {
   const list = document.getElementById("xp-list"); let tick = false;
