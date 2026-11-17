@@ -10,7 +10,11 @@ En ligne : https://silvere23.github.io/silvere_tchoudji_portfolio/
 
 ```
 .
-├── index.html              Page unique du site : portfolio, liste du blog (#blog) et lecture d'un article (#article-…)
+├── index.html              Page unique du site : portfolio, blog (#blog, #article-…) et fiches projet (#projet/…)
+├── projets/
+│   ├── projets.js          Liste de tous les projets : c'est le fichier à modifier pour en ajouter un
+│   ├── *.md                Texte de la fiche de chaque projet
+│   └── img/<slug>/         Images d'un projet (galerie, couverture)
 ├── blog/
 │   ├── posts.json          Liste des articles : titre, date, thèmes, résumé
 │   ├── *.md                Un fichier Markdown par article
@@ -28,7 +32,9 @@ En ligne : https://silvere23.github.io/silvere_tchoudji_portfolio/
     ├── js/
     │   ├── config.js       E-mail, GitHub, LinkedIn, chemin du CV, réglages des commentaires
     │   ├── common.js       Menu, thème, liens : chargé sur toutes les pages
-    │   ├── blog.js         Liste et lecture des articles, commentaires
+    │   ├── projects.js     Construit les cartes, le carrousel, le diaporama et le compteur
+│   ├── project-view.js Fiche projet, mise en page selon le type (tech, ux, graph)
+│   ├── blog.js         Liste et lecture des articles, commentaires, navigation entre les vues
     │   ├── vendor/         Bibliothèques tierces (marked, DOMPurify)
     │   ├── theme.js        Mode jour / nuit appliqué avant l'affichage
     │   ├── main.js         Navigation, animations, filtres, formulaire
@@ -37,7 +43,6 @@ En ligne : https://silvere23.github.io/silvere_tchoudji_portfolio/
     ├── img/
     │   ├── favicon.svg
     │   ├── photo.jpg       À ajouter : portrait carré, 640 px minimum
-    │   └── projects/       Captures d'écran des projets (facultatif)
     └── docs/
         └── CV_Silvere_Tchoudji.pdf
 ```
@@ -47,18 +52,45 @@ En ligne : https://silvere23.github.io/silvere_tchoudji_portfolio/
 | Je veux changer | Fichier |
 |---|---|
 | E-mail, GitHub, LinkedIn, CV | `assets/js/config.js` |
-| Textes, projets, expériences | `index.html` |
+| Projets | `projets/projets.js` et `projets/<slug>.md` |
+| Textes, expériences | `index.html` |
 | Couleurs, polices | variables `:root` (nuit) et `[data-theme="light"]` (jour) en haut de `assets/css/style.css` |
 | Photo | remplacer `assets/img/photo.jpg` |
 | CV | remplacer le PDF dans `assets/docs/` en gardant le même nom |
 
 ### Projets
 
-- Chaque projet existe deux fois dans `index.html` : une diapositive du carrousel (`<article class="card pf">`) et une carte de la liste complète (`<article class="card pg">`). Pour en ajouter un, copier les deux blocs et régler `data-c` sur `cyber`, `devops`, `ux` ou `graph`.
-- L'attribut `data-feat` sur une diapositive la fait apparaître dans le carrousel « Tous ». Sans lui, elle n'apparaît que dans sa catégorie.
-- La durée d'affichage d'un projet se règle avec `DELAY` dans `assets/js/main.js`.
-- **Ajouter une capture d'écran** : déposer l'image dans `assets/img/projects/`, puis ajouter `<img src="assets/img/projects/nom.jpg" alt="Description" loading="lazy">` à l'intérieur du bloc `<div class="media">` du projet. Elle recouvre le visuel généré et s'agrandit au clic.
-- **Ajouter un lien** (démo, dépôt GitHub) : ajouter `<a class="btn sm" href="…" target="_blank" rel="noopener">Code source</a>` sous les étiquettes du projet.
+Tous les projets sont décrits dans `projets/projets.js`. Les cartes, le carrousel, le diaporama de l'accueil et le compteur « +16 projets » sont construits à partir de cette liste, il n'y a rien à toucher dans `index.html`.
+
+**Ajouter un projet**
+
+1. Dans `projets/projets.js`, copier un bloc `{ … }` et changer ses valeurs. Le début du fichier explique chaque champ.
+2. Écrire la fiche dans `projets/<slug>.md`, en Markdown (titres `##`, listes, liens). Ce fichier est facultatif.
+3. Déposer les images dans `projets/img/<slug>/`, puis les déclarer dans `gallery` :
+   ```js
+   gallery: [
+     { src: "projets/img/mon-projet/logo.png", caption: "Logo principal", wide: true },
+     { src: "projets/img/mon-projet/carte.jpg", caption: "Carte de visite" }
+   ]
+   ```
+   `wide: true` affiche l'image sur toute la largeur. Les images s'agrandissent au clic.
+
+**Les trois mises en page**
+
+| Type | Catégories | Contenu de la fiche |
+|---|---|---|
+| `tech` | cyber, devops | illustration, chiffres clés (`kpis`), texte, captures si `gallery` est rempli, liens |
+| `ux` | ux | illustration, texte, puis galerie « Maquettes et écrans » |
+| `graph` | graph | galerie en grand d'abord, palette (`palette`), typographies (`fonts`), puis la démarche |
+
+Le type est déduit de la catégorie. On peut le forcer avec `type: "graph"`, par exemple pour un projet DevOps qui doit surtout montrer des visuels.
+
+**Autres réglages**
+
+- `featured: true` met le projet en avant dans le carrousel « Tous » et dans le diaporama de l'accueil (`hero` donne son sous-titre).
+- `cover` remplace l'illustration de la carte par une image.
+- Les illustrations des cartes sont dessinées en SVG dans `index.html` (symboles `a-<slug>`), générées par `tools/illustrations.py`. Un projet sans illustration affiche l'icône de sa catégorie.
+- La durée d'affichage d'un projet dans le carrousel se règle avec `DELAY` dans `assets/js/main.js`.
 
 ## Blog
 

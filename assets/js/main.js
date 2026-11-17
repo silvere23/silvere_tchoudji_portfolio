@@ -38,6 +38,9 @@ document.querySelectorAll(".xp-head").forEach(btn => btn.addEventListener("click
   [...track.children].forEach(c => { const copy = c.cloneNode(true); copy.setAttribute("aria-hidden", "true"); copy.querySelectorAll("a").forEach(a => a.tabIndex = -1); track.appendChild(copy); });
 })();
 
+// outils : chaque rangée est dupliquée pour boucler sans coupure
+document.querySelectorAll(".tool-track").forEach(t => [...t.children].forEach(c => { const copy = c.cloneNode(true); copy.setAttribute("aria-hidden", "true"); t.appendChild(copy); }));
+
 // expérience : le trait de la frise se remplit à mesure qu'on fait défiler la section
 (() => {
   const list = document.getElementById("xp-list"); let tick = false;
@@ -152,13 +155,6 @@ document.getElementById("form").addEventListener("submit", e => {
     slides.forEach((s, n) => s.classList.toggle("on", n === i)); dots.forEach((d, n) => d.classList.toggle("on", n === i));
   }, 4000);
 })();
-
-// compteur de projets : calculé à partir de la liste complète, se met à jour tout seul quand un projet est ajouté
-const projectCount = document.querySelector("[data-project-count]");
-if (projectCount) {
-  const n = document.querySelectorAll("#all > article").length;
-  if (n) projectCount.textContent = "+" + n;
-}
 
 // photo : affiche les initiales si assets/img/photo.jpg est absent
 const photo = document.querySelector(".photo img");
