@@ -461,3 +461,9 @@ footer .wrap{display:flex;justify-content:space-between;align-items:center;gap:1
   .about p,.prose>p{text-align:justify;hyphens:auto;-webkit-hyphens:auto;text-wrap:pretty}
   .about p strong{white-space:nowrap}
 }
+
+/* Illustrations des projets (symboles SVG #a-*) */
+.media>.art{position:absolute;inset:0;width:100%;height:100%;padding:18px 18px 34px;transition:transform .7s cubic-bezier(.16,1,.3,1)}
+.card:hover .media>.art{transform:scale(1.05)}
+.media.sm>.art{padding:12px 12px 30px}
+.hs-slide>.art{position:absolute;inset:0;width:100%;height:100%;padding:10px 24px 64px}
