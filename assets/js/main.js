@@ -18,13 +18,33 @@ const heroTitle = document.querySelector(".hero h1");
 requestAnimationFrame(() => requestAnimationFrame(() => heroTitle.classList.add("shown")));
 
 // cartes d'une même rangée : apparition en léger décalé
-document.querySelectorAll(".grid, .tl, .contact").forEach(g => [...g.children].forEach((el, i) => { if (el.classList.contains("reveal")) el.style.transitionDelay = (i % 3) * 90 + "ms"; }));
+document.querySelectorAll(".grid, .xp-list, .contact").forEach(g => [...g.children].forEach((el, i) => { if (el.classList.contains("reveal")) el.style.transitionDelay = (i % 3) * 90 + "ms"; }));
 
 // apparition au scroll + lien actif
 const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); const t = e.target.querySelector(".title"); if (t) t.classList.add("shown"); const el = e.target; setTimeout(() => { el.style.transitionDelay = ""; }, 1100); } }), { threshold: .12 });
 document.querySelectorAll(".reveal").forEach(el => io.observe(el));
 const spy = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) links.querySelectorAll("a").forEach(a => a.classList.toggle("active", a.getAttribute("href") === "#" + e.target.id)); }), { rootMargin: "-45% 0px -50% 0px" });
 document.querySelectorAll("section[id]").forEach(s => spy.observe(s));
+
+// expérience : un clic déplie ou replie une carte, une seule ouverte à la fois
+document.querySelectorAll(".xp-head").forEach(btn => btn.addEventListener("click", () => {
+  const card = btn.closest(".xp"), open = !card.classList.contains("open");
+  document.querySelectorAll(".xp").forEach(c => { c.classList.toggle("open", open && c === card); c.querySelector(".xp-head").setAttribute("aria-expanded", open && c === card); });
+}));
+
+// certifications : les cartes sont dupliquées pour que la bande boucle sans coupure
+(() => {
+  const track = document.querySelector("#certs .cert-track");
+  [...track.children].forEach(c => { const copy = c.cloneNode(true); copy.setAttribute("aria-hidden", "true"); copy.querySelectorAll("a").forEach(a => a.tabIndex = -1); track.appendChild(copy); });
+})();
+
+// expérience : le trait de la frise se remplit à mesure qu'on fait défiler la section
+(() => {
+  const list = document.getElementById("xp-list"); let tick = false;
+  const fill = () => { tick = false; const r = list.getBoundingClientRect(); list.style.setProperty("--p", Math.min(1, Math.max(0, (innerHeight * .62 - r.top) / r.height)).toFixed(3)); };
+  const ask = () => { if (!tick) { tick = true; requestAnimationFrame(fill); } };
+  addEventListener("scroll", ask, { passive: true }); addEventListener("resize", ask); fill();
+})();
 
 // projets : carrousel automatique, filtres par catégorie, bouton « voir plus »
 (() => {
@@ -133,9 +153,16 @@ document.getElementById("form").addEventListener("submit", e => {
   }, 4000);
 })();
 
+// compteur de projets : calculé à partir de la liste complète, se met à jour tout seul quand un projet est ajouté
+const projectCount = document.querySelector("[data-project-count]");
+if (projectCount) {
+  const n = document.querySelectorAll("#all > article").length;
+  if (n) projectCount.textContent = "+" + n;
+}
+
 // photo : affiche les initiales si assets/img/photo.jpg est absent
 const photo = document.querySelector(".photo img");
 if (photo) {
-  const fallback = () => photo.replaceWith("ST");
+  const fallback = () => (photo.closest("picture") || photo).replaceWith("ST");
   if (photo.complete && photo.naturalWidth === 0) fallback(); else photo.addEventListener("error", fallback);
 }
