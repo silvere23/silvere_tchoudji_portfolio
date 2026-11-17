@@ -3,8 +3,8 @@
 "use strict";
 window.ProjectView = (() => {
   const root = document.getElementById("p-root");
-  const NAMES = { cyber: "Cybersécurité", devops: "DevOps", ux: "UX design", graph: "Création graphique" };
-  const TYPES = { tech: "Projet technique", ux: "Projet UX", graph: "Projet graphique" };
+  const NAMES = { cyber: t("Cybersécurité"), devops: "DevOps", ux: "UX design", graph: t("Création graphique") };
+  const TYPES = { tech: t("Projet technique"), ux: t("Projet UX"), graph: t("Projet graphique") };
   const el = (tag, cls, text) => { const e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; };
   const section = (title, cls) => { const s = el("section", "p-sec " + (cls || "")); if (title) s.appendChild(el("h2", "p-h2", title)); return s; };
   const ARROW = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg>';
@@ -19,7 +19,7 @@ window.ProjectView = (() => {
     return h;
   }
   function facts(p) {
-    const rows = [["Type", TYPES[PROJECT_TYPE(p)]], ...(p.facts || [])];
+    const rows = [[t("Type"), TYPES[PROJECT_TYPE(p)]], ...(p.facts || [])];
     const dl = el("dl", "p-facts");
     rows.forEach(([k, v]) => { const d = el("div"); d.append(el("dt", "", k), el("dd", "", v)); dl.appendChild(d); });
     return dl;
@@ -42,7 +42,7 @@ window.ProjectView = (() => {
     if (!items.length) {
       g.className = "p-gallery";                                 // pas de colonnes tant qu'il n'y a pas d'images
       const e = el("div", "p-empty card");
-      e.append(el("b", "", "Visuels à venir"), el("span", "", "Les images de ce projet seront ajoutées prochainement."));
+      e.append(el("b", "", t("Visuels à venir")), el("span", "", t("Les images de ce projet seront ajoutées prochainement.")));
       g.appendChild(e); return g;
     }
     items.forEach(it => {
@@ -55,20 +55,20 @@ window.ProjectView = (() => {
   }
   function palette(p) {
     if (!p.palette || !p.palette.length) return null;
-    const s = section("Palette de couleurs"), d = el("div", "p-palette");
+    const s = section(t("Palette de couleurs")), d = el("div", "p-palette");
     p.palette.forEach(c => { const sw = el("div", "p-swatch"); const chip = el("i"); chip.style.background = c.hex; sw.append(chip, el("b", "", c.name || c.hex), el("span", "", c.hex)); d.appendChild(sw); });
     s.appendChild(d); return s;
   }
   function fonts(p) {
     if (!p.fonts || !p.fonts.length) return null;
-    const s = section("Typographies"), d = el("div", "p-fonts");
+    const s = section(t("Typographies")), d = el("div", "p-fonts");
     p.fonts.forEach(f => { const c = el("div", "card p-font"); const big = el("span", "p-aa", "Aa"); big.style.fontFamily = `"${f.name}", var(--display)`; c.append(big, el("b", "", f.name), el("span", "", f.use || "")); d.appendChild(c); });
     s.appendChild(d); return s;
   }
   function nav(p, list) {
     const i = list.indexOf(p), prev = list[(i - 1 + list.length) % list.length], next = list[(i + 1) % list.length];
-    const n = el("nav", "p-nav"); n.setAttribute("aria-label", "Autres projets");
-    [[prev, "Projet précédent", "prev"], [next, "Projet suivant", "next"]].forEach(([q, label, cls]) => {
+    const n = el("nav", "p-nav"); n.setAttribute("aria-label", t("Autres projets"));
+    [[prev, t("Projet précédent"), "prev"], [next, t("Projet suivant"), "next"]].forEach(([q, label, cls]) => {
       const a = el("a", "card " + cls); a.href = "#projet/" + q.slug; a.append(el("span", "", label), el("b", "", q.title)); n.appendChild(a);
     });
     return n;
@@ -78,8 +78,10 @@ window.ProjectView = (() => {
   async function prose(p) {
     const box = el("div", "prose p-prose");
     try {
-      const r = await fetch("projets/" + encodeURIComponent(p.slug) + ".md", { cache: "no-cache" });
-      if (!r.ok) throw 0;
+      // en anglais : projets/en/slug.md, sinon la version française
+      const get = path => fetch(path, { cache: "no-cache" }).then(r => { if (!r.ok) throw 0; return r; });
+      const fr = "projets/" + encodeURIComponent(p.slug) + ".md";
+      const r = LANG === "en" ? await get("projets/en/" + encodeURIComponent(p.slug) + ".md").catch(() => get(fr)) : await get(fr);
       box.innerHTML = DOMPurify.sanitize(marked.parse(await r.text()));
       box.querySelectorAll("a[href^='http']").forEach(a => { a.target = "_blank"; a.rel = "noopener"; });
       return box;
@@ -97,10 +99,10 @@ window.ProjectView = (() => {
 
   // ---------- assemblage selon le type ----------
   async function show(slug) {
-    const list = window.PROJECTS || [], p = list.find(x => x.slug === slug);
+    const list = (window.PROJECTS || []).map(loc), p = list.find(x => x.slug === slug);
     root.textContent = "";
     if (!p) {
-      root.append(el("h1", "", "Projet introuvable"), el("p", "p-lead", "Ce projet n'existe pas ou a été déplacé."));
+      root.append(el("h1", "", t("Projet introuvable")), el("p", "p-lead", t("Ce projet n'existe pas ou a été déplacé.")));
       document.title = "Projet introuvable | Silvere Tchoudji"; return;
     }
     const type = PROJECT_TYPE(p);
@@ -116,17 +118,17 @@ window.ProjectView = (() => {
       // création graphique : les visuels d'abord, en grand
       if (!(p.gallery && p.gallery.length)) parts.push(hero(p));
       parts.push(gallery(p, "masonry"), palette(p), fonts(p));
-      if (text) { const s = section("La démarche"); s.appendChild(text); parts.push(s); }
+      if (text) { const s = section(t("La démarche")); s.appendChild(text); parts.push(s); }
     } else if (type === "ux") {
       // UX : l'illustration, la démarche, puis les maquettes
       parts.push(hero(p), kpis(p));
       if (text) parts.push(text);
-      const s = section("Maquettes et écrans"); s.appendChild(gallery(p)); parts.push(s);
+      const s = section(t("Maquettes et écrans")); s.appendChild(gallery(p)); parts.push(s);
     } else {
       // technique : l'illustration, les chiffres clés, puis le détail
       parts.push(hero(p), kpis(p));
       if (text) parts.push(text);
-      if (p.gallery && p.gallery.length) { const s = section("Captures"); s.appendChild(gallery(p)); parts.push(s); }
+      if (p.gallery && p.gallery.length) { const s = section(t("Captures")); s.appendChild(gallery(p)); parts.push(s); }
     }
     parts.push(links(p), nav(p, list));
     parts.filter(Boolean).forEach(x => root.appendChild(x));
