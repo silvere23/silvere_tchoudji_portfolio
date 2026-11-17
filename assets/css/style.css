@@ -119,10 +119,11 @@ header.scrolled{background:var(--header);backdrop-filter:blur(14px);border-color
 @keyframes float{50%{transform:translateY(-10px)}}
 
 /* sections */
-section{padding:112px 0;position:relative}
+section{padding:clamp(64px,8vw,84px) 0;position:relative}
 .eyebrow{font-size:.75rem;letter-spacing:.2em;text-transform:uppercase;color:var(--primary-2);font-weight:600}
-.title{font-size:clamp(2rem,4.5vw,2.75rem);font-weight:700;margin:10px 0 14px;letter-spacing:-.02em}
-.sub{color:var(--muted);max-width:620px;margin-bottom:48px}
+.title{font-size:clamp(2rem,4.5vw,2.75rem);font-weight:700;margin:10px 0 clamp(32px,4vw,44px);letter-spacing:-.02em}
+.title:has(+.sub){margin-bottom:14px}
+.sub{color:var(--muted);max-width:620px;margin-bottom:clamp(32px,4vw,44px)}
 .card{background:var(--card-a);border:1px solid var(--border);border-radius:24px;padding:28px;transition:border-color .25s,transform .25s}
 .card:hover{border-color:rgba(106,94,237,.55);transform:translateY(-3px)}
 .tags{display:flex;flex-wrap:wrap;gap:8px}
@@ -333,7 +334,7 @@ section{padding:112px 0;position:relative}
 
 /* bande colorée pleine largeur, utilisée pour la section Contact.
    Mode nuit : teinte profonde et texte clair. Mode jour : teinte pastel et texte sombre. */
-.band{position:relative;overflow:hidden;padding:104px 0;--gx:0%;--dot:rgba(255,255,255,.14);--shine:rgba(255,255,255,.1);
+.band{position:relative;overflow:hidden;padding:clamp(72px,9vw,96px) 0;--gx:0%;--dot:rgba(255,255,255,.14);--shine:rgba(255,255,255,.1);
   background:radial-gradient(ellipse 60% 90% at var(--gx) 0,var(--g1),transparent 60%),radial-gradient(ellipse 50% 80% at calc(100% - var(--gx)) 100%,var(--g2),transparent 60%),linear-gradient(120deg,var(--c-a),var(--c-b) 45%,var(--c-c))}
 #contact{--gx:100%}
 /* mode nuit */
