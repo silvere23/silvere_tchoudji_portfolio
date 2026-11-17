@@ -11,7 +11,8 @@
   const EN = {
     // navigation et pied de page
     "À propos": "About", "Compétences": "Skills", "Expérience": "Experience", "Projets": "Projects", "Formation": "Education",
-    "Retour en haut ↑": "Back to top ↑", "Changer de thème": "Toggle theme", "Menu": "Menu",
+    "Retour en haut": "Back to top", "Liens": "Links", "Télécharger le CV": "Download CV", "E-mail": "Email",
+    "Conçu et développé par Silvere · HTML, CSS, JavaScript · Hébergé sur GitHub Pages": "Designed and built by Silvere · HTML, CSS, JavaScript · Hosted on GitHub Pages", "Changer de thème": "Toggle theme", "Menu": "Menu",
     // accueil
     "4 ans d'expérience": "4 years of experience", "Cybersécurité": "Cybersecurity", "En poste chez Les Menus Services": "Currently at Les Menus Services",
     "Ingénieur DevOps & Cloud": "DevOps & Cloud Engineer", "Ans": "Years", "Langues": "Languages",
