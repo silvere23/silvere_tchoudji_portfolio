@@ -481,3 +481,68 @@ footer .wrap{display:flex;justify-content:space-between;align-items:center;gap:1
 .tool .ico{width:16px;height:16px;color:var(--primary-2)}
 .tool:hover{border-color:var(--primary-2);color:var(--text)}
 @media (prefers-reduced-motion:reduce){.tool-marquee{overflow-x:auto}.tool-track [aria-hidden]{display:none}}
+
+/* Lien « Voir le projet » sur les cartes (toute la carte est cliquable) */
+.pf,.pg{cursor:pointer}
+.p-open{display:inline-flex;align-items:center;gap:6px;width:fit-content;margin-top:20px;font-size:.85rem;font-weight:600;color:var(--c1)}
+.p-open .arr{width:16px;height:16px;transition:transform .25s}
+.pf:hover .p-open .arr,.pg:hover .p-open .arr,.p-open:focus-visible .arr{transform:translateX(4px)}
+.pg .p-open{margin-top:auto;padding-top:16px}
+
+/* ---------- Fiche projet ---------- */
+.project{max-width:1040px;padding-top:120px;padding-bottom:96px}
+.p-top{display:grid;grid-template-columns:1.6fr 1fr;gap:40px;align-items:start;margin-bottom:40px}
+.p-head h1{font-size:clamp(2.1rem,5vw,3.4rem);letter-spacing:-.02em;line-height:1.08;margin:6px 0 16px}
+.p-lead{color:var(--text-2);font-size:1.08rem;line-height:1.7}
+.p-facts{display:grid;gap:14px;padding:24px;border:1px solid var(--border);border-radius:20px;background:var(--card-a)}
+.p-facts div{display:grid;gap:2px}
+.p-facts dt{font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.p-facts dd{margin:0;font-weight:500;color:var(--text)}
+.p-hero{min-height:0;aspect-ratio:16/8;border-radius:24px;margin-bottom:32px}
+.p-hero>.art{padding:28px 28px 28px}
+.p-hero>.ico{width:120px;height:120px}
+.p-kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;margin-bottom:40px}
+.p-kpi{padding:22px 24px}
+.p-kpi b{display:block;font-family:var(--display);font-size:2rem;line-height:1.1;background:linear-gradient(90deg,var(--c1),var(--c2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.p-kpi span{font-size:.85rem;color:var(--muted)}
+.p-prose{max-width:760px;margin-top:0}
+.p-prose h2{margin-top:2.2em}
+.p-sec{margin-top:56px}
+.p-h2{font-size:clamp(1.4rem,3vw,1.9rem);margin-bottom:20px}
+.p-gallery{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.p-gallery figure{margin:0;border-radius:18px;overflow:hidden;border:1px solid var(--border);background:var(--card-a)}
+.p-gallery figure.wide{grid-column:1/-1}
+.p-gallery img{display:block;width:100%;height:auto;cursor:zoom-in;transition:transform .6s cubic-bezier(.16,1,.3,1)}
+.p-gallery figure:hover img{transform:scale(1.02)}
+.p-gallery figcaption{padding:12px 16px;font-size:.85rem;color:var(--muted)}
+.p-gallery.masonry{display:block;columns:2;column-gap:16px}
+.p-gallery.masonry figure{break-inside:avoid;margin-bottom:16px}
+.p-gallery.masonry figure.wide{column-span:all}
+.p-empty{grid-column:1/-1;display:grid;gap:4px;text-align:center;padding:40px 24px;border-style:dashed}
+.p-empty b{font-family:var(--display)}
+.p-empty span{color:var(--muted);font-size:.9rem}
+.p-palette{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:16px}
+.p-swatch{display:grid;gap:2px;font-size:.85rem}
+.p-swatch i{display:block;height:96px;border-radius:16px;border:1px solid var(--border);margin-bottom:8px}
+.p-swatch span{color:var(--muted);font-family:ui-monospace,monospace;font-size:.78rem}
+.p-fonts{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px}
+.p-font{display:grid;gap:4px}
+.p-aa{font-size:3.4rem;line-height:1;margin-bottom:8px}
+.p-font span{color:var(--muted);font-size:.85rem}
+.p-links{display:flex;flex-wrap:wrap;gap:12px;margin-top:40px}
+.p-links svg{width:16px;height:16px}
+.p-nav{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:72px;padding-top:40px;border-top:1px solid var(--border)}
+.p-nav a{display:grid;gap:4px;padding:20px 24px}
+.p-nav .next{text-align:right}
+.p-nav span{font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.p-nav b{font-family:var(--display);font-size:1.1rem}
+#p-root[data-type="graph"] .p-top{margin-bottom:32px}
+@media (max-width:800px){
+  .project{padding-top:96px}
+  .p-top{grid-template-columns:1fr;gap:24px}
+  .p-hero{aspect-ratio:16/10}
+  .p-gallery{grid-template-columns:1fr}
+  .p-gallery.masonry{columns:1}
+  .p-nav{grid-template-columns:1fr}
+  .p-nav .next{text-align:left}
+}

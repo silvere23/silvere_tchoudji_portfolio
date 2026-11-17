@@ -88,22 +88,30 @@
   }).observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] });
 
   /* ---------- navigation : quelle vue afficher selon la fin de l'adresse ---------- */
+  const vProject = document.getElementById("view-project");
+  let homeY = 0;
   function route() {
     const hash = decodeURIComponent(location.hash.slice(1));
-    const onList = hash === "blog", onArticle = hash.startsWith("article-"), onBlog = onList || onArticle;
-    const wasBlog = home.hidden;
-    home.hidden = onBlog; vList.hidden = !onList; vArticle.hidden = !onArticle;
-    if (onBlog) {
-      document.querySelectorAll("#links a").forEach(a => a.classList.toggle("active", a.getAttribute("href") === "#blog"));
+    const onList = hash === "blog", onArticle = hash.startsWith("article-"), onProject = hash.startsWith("projet/");
+    const away = onList || onArticle || onProject;
+    const wasAway = home.hidden;
+    if (away && !wasAway) homeY = scrollY;                       // position sur l'accueil, pour y revenir
+    home.hidden = away; vList.hidden = !onList; vArticle.hidden = !onArticle; vProject.hidden = !onProject;
+    document.querySelectorAll("#links a").forEach(a => a.classList.toggle("active",
+      (onList || onArticle) ? a.getAttribute("href") === "#blog" : onProject && a.getAttribute("href") === "#projets"));
+    if (away) {
       scrollTo(0, 0);
-      if (onList) { document.title = "Blog | Silvere Tchoudji"; showList(); } else showArticle(hash.slice(8));
-    } else if (wasBlog) {
+      if (onList) { document.title = "Blog | Silvere Tchoudji"; showList(); }
+      else if (onArticle) showArticle(hash.slice(8));
+      else ProjectView.show(hash.slice(7));
+    } else if (wasAway) {
       // retour au portfolio : on recalcule les éléments qui dépendent de la taille, puis on va à la section demandée
       document.title = baseTitle;
-      document.querySelector('#links a[href="#blog"]').classList.remove("active");
+      document.querySelectorAll("#links a").forEach(a => a.classList.remove("active"));
       dispatchEvent(new Event("resize"));
       const target = hash && document.getElementById(hash);
-      if (target) target.scrollIntoView(); else scrollTo(0, 0);
+      if ((!hash || hash === "projets") && homeY) scrollTo(0, hash === "projets" ? Math.max(homeY, 0) : homeY);
+      else if (target) target.scrollIntoView(); else scrollTo(0, 0);
     }
   }
   addEventListener("hashchange", route);

@@ -15,9 +15,12 @@
 <meta property="og:locale" content="fr_FR">
 <script src="assets/js/config.js" defer></script>
 <script src="assets/js/common.js" defer></script>
+<script src="projets/projets.js" defer></script>
+<script src="assets/js/projects.js" defer></script>
 <script src="assets/js/main.js" defer></script>
 <script src="assets/js/vendor/marked.umd.js" defer></script>
 <script src="assets/js/vendor/purify.min.js" defer></script>
+<script src="assets/js/project-view.js" defer></script>
 <script src="assets/js/blog.js" defer></script>
 <script src="assets/js/background.js" defer></script>
 <link rel="preload" href="assets/fonts/space-grotesk-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
@@ -101,13 +104,7 @@
     </div>
     <!-- Projets phares : fondu automatique, clic vers la section Projets -->
     <a class="hs" id="hs" href="#projets" aria-label="Voir les projets phares">
-      <div class="hs-slide on" data-c="cyber"><svg class="art" aria-hidden="true"><use href="#a-asr-sdn"/></svg><div class="hs-cap"><b>ASR-SDN</b><span>Cybersécurité · Réseau SDN</span></div></div>
-      <div class="hs-slide" data-c="devops"><svg class="art" aria-hidden="true"><use href="#a-site-web-poleit"/></svg><div class="hs-cap"><b>Site web PoleIT</b><span>DevOps · Kubernetes</span></div></div>
-      <div class="hs-slide" data-c="ux"><svg class="art" aria-hidden="true"><use href="#a-maquettes-sims"/></svg><div class="hs-cap"><b>Maquettes SIMS</b><span>UX design · Figma</span></div></div>
-      <div class="hs-slide" data-c="devops"><svg class="art" aria-hidden="true"><use href="#a-refonte-sims"/></svg><div class="hs-cap"><b>Refonte SIMS</b><span>DevOps · CI/CD</span></div></div>
-      <div class="hs-slide" data-c="ux"><svg class="art" aria-hidden="true"><use href="#a-application-mawemba"/></svg><div class="hs-cap"><b>Application Mawemba</b><span>UX design · Mobile</span></div></div>
-      <div class="hs-slide" data-c="graph"><svg class="art" aria-hidden="true"><use href="#a-identite-graphique-d-entreprises"/></svg><div class="hs-cap"><b>Identité graphique</b><span>Création graphique</span></div></div>
-      <div class="hs-dots" aria-hidden="true"><i class="on"></i><i></i><i></i><i></i><i></i><i></i></div>
+      <div class="hs-dots" aria-hidden="true"></div>
     </a>
     <a class="discover" href="#a-propos">Découvrir<span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6"/></svg></span></a>
   </div>
@@ -122,7 +119,7 @@
         <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s7-6.2 7-11a7 7 0 1 0-14 0c0 4.8 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>Mobile dans toute la France</li>
         <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-5 9 5-9 5z"/><path d="M7 11.5V16c2.5 2 7.5 2 10 0v-4.5"/></svg>Mastère Cybersécurité et Cloud Computing, IPSSI Lille</li>
         <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2"/></svg>DevOps &amp; UX Designer chez Les Menus Services</li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3.5 3 14.500 0 18M12 3c-3 3.500-3 14.500 0 18"/></svg>Français courant, anglais B2</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3.5 3 14.500 0 18M12 3c-3 3.500-3 14.500 0 18"/></svg>Français courant, anglais B1</li>
       </ul>
     </div>
     <div class="reveal">
@@ -218,152 +215,7 @@
   <div id="projs">
     <!-- Carrousel : un projet à la fois, défilement automatique, mis en pause au survol -->
     <div class="carousel reveal" id="carousel" role="region" aria-roledescription="carrousel" aria-label="Projets">
-      <div class="car-track" id="track" tabindex="0">
-        <article class="card pf" data-c="cyber" data-feat>
-          <div class="pf-body">
-            <span class="pf-badge"><svg class="ico" aria-hidden="true"><use href="#i-cyber"/></svg>Projet de soutenance</span>
-            <h3>ASR-SDN</h3>
-            <p>Architecture SDN pour la détection, la segmentation et la réponse automatisée aux cyberattaques en réseau d'entreprise. Suricata détecte, un moteur Python décide, ONOS isole ou bloque l'hôte. Six scénarios validés en lab, temps de réponse moyen d'environ 0,09 s.</p>
-            <div class="pf-tags"><span>ONOS</span><span>Suricata</span><span>Python</span><span>Mininet</span></div>
-          </div>
-          <div class="media"><svg class="art" aria-hidden="true"><use href="#a-asr-sdn"/></svg><span class="media-tag">asr-sdn</span></div>
-        </article>
-        <article class="card pf" data-c="devops" data-feat>
-          <div class="pf-body">
-            <span class="pf-badge"><svg class="ico" aria-hidden="true"><use href="#i-devops"/></svg>Déploiement</span>
-            <h3>Site web PoleIT</h3>
-            <p>Création d'un site vitrine, déployé avec Kubernetes et Docker, puis supervisé avec Prometheus et Grafana pour suivre son état en continu.</p>
-            <div class="pf-tags"><span>Kubernetes</span><span>Docker</span><span>Prometheus</span><span>Grafana</span></div>
-          </div>
-          <div class="media"><svg class="art" aria-hidden="true"><use href="#a-site-web-poleit"/></svg><span class="media-tag">site-web-poleit</span></div>
-        </article>
-        <article class="card pf" data-c="ux" data-feat>
-          <div class="pf-body">
-            <span class="pf-badge"><svg class="ico" aria-hidden="true"><use href="#i-ux"/></svg>En entreprise</span>
-            <h3>Maquettes SIMS</h3>
-            <p>Maquettage et prototypage sous Figma des interfaces de la nouvelle application SIMS chez Les Menus Services, du parcours utilisateur aux écrans finaux.</p>
-            <div class="pf-tags"><span>Figma</span><span>Prototypage</span><span>Parcours utilisateur</span></div>
-          </div>
-          <div class="media"><svg class="art" aria-hidden="true"><use href="#a-maquettes-sims"/></svg><span class="media-tag">maquettes-sims</span></div>
-        </article>
-        <article class="card pf" data-c="devops" data-feat>
-          <div class="pf-body">
-            <span class="pf-badge"><svg class="ico" aria-hidden="true"><use href="#i-devops"/></svg>En entreprise</span>
-            <h3>Refonte SIMS</h3>
-            <p>Conteneurisation, déploiement et supervision des applications du projet SIMS chez Les Menus Services, avec une chaîne CI/CD et des tableaux de bord de suivi.</p>
-            <div class="pf-tags"><span>Docker</span><span>CI/CD</span><span>Prometheus</span><span>Grafana</span></div>
-          </div>
-          <div class="media"><svg class="art" aria-hidden="true"><use href="#a-refonte-sims"/></svg><span class="media-tag">refonte-sims</span></div>
-        </article>
-        <article class="card pf" data-c="ux" data-feat>
-          <div class="pf-body">
-            <span class="pf-badge"><svg class="ico" aria-hidden="true"><use href="#i-ux"/></svg>Application mobile</span>
-            <h3>Application Mawemba</h3>
-            <p>Conception des interfaces de l'application mobile Mawemba : UI, maquettage et prototypage sous Figma.</p>
-            <div class="pf-tags"><span>Figma</span><span>UI mobile</span><span>Prototypage</span></div>
-          </div>
-          <div class="media"><svg class="art" aria-hidden="true"><use href="#a-application-mawemba"/></svg><span class="media-tag">application-mawemba</span></div>
-        </article>
-        <article class="card pf" data-c="graph" data-feat>
-          <div class="pf-body">
-            <span class="pf-badge"><svg class="ico" aria-hidden="true"><use href="#i-graph"/></svg>Identité visuelle</span>
-            <h3>Identité graphique d'entreprises</h3>
-            <p>Création d'identités visuelles et de supports de communication pour des entreprises.</p>
-            <div class="pf-tags"><span>Identité visuelle</span><span>Supports de communication</span></div>
-          </div>
-          <div class="media"><svg class="art" aria-hidden="true"><use href="#a-identite-graphique-d-entreprises"/></svg><span class="media-tag">identite-graphique-d-entreprises</span></div>
-        </article>
-        <article class="card pf" data-c="cyber">
-          <div class="pf-body">
-            <span class="pf-badge"><svg class="ico" aria-hidden="true"><use href="#i-cyber"/></svg>Cyber</span>
-            <h3>Hardening de serveurs</h3>
-            <p>Durcissement de systèmes Linux et Windows Server : réduction de la surface d'attaque et mise en place de politiques de sécurité.</p>
-            <div class="pf-tags"><span>Linux</span><span>Windows Server</span></div>
-          </div>
-          <div class="media"><svg class="art" aria-hidden="true"><use href="#a-hardening-de-serveurs"/></svg><span class="media-tag">hardening-de-serveurs</span></div>
-        </article>
-        <article class="card pf" data-c="cyber">
-          <div class="pf-body">
-            <span class="pf-badge"><svg class="ico" aria-hidden="true"><use href="#i-cyber"/></svg>Cyber</span>
-            <h3>Pentest en lab</h3>
-            <p>Tests d'intrusion en environnement de lab : reconnaissance, exploitation et rapport de vulnérabilités. Exemple : salle Ignite de TryHackMe, via la faille CVE-2018-16763 de Fuel CMS.</p>
-            <div class="pf-tags"><span>Pentest</span><span>TryHackMe</span></div>
-          </div>
-          <div class="media"><svg class="art" aria-hidden="true"><use href="#a-pentest-en-lab"/></svg><span class="media-tag">pentest-en-lab</span></div>
-        </article>
-        <article class="card pf" data-c="cyber">
-          <div class="pf-body">
-            <span class="pf-badge"><svg class="ico" aria-hidden="true"><use href="#i-cyber"/></svg>Cyber</span>
-            <h3>Reverse engineering</h3>
-            <p>Analyse de binaires pour comprendre le fonctionnement interne d'applications.</p>
-            <div class="pf-tags"><span>Analyse de binaires</span></div>
-          </div>
-          <div class="media"><svg class="art" aria-hidden="true"><use href="#a-reverse-engineering"/></svg><span class="media-tag">reverse-engineering</span></div>
-        </article>
-        <article class="card pf" data-c="cyber">
-          <div class="pf-body">
-            <span class="pf-badge"><svg class="ico" aria-hidden="true"><use href="#i-cyber"/></svg>Cyber</span>
-            <h3>Analyse de ransomware</h3>
-            <p>Analyse en cinq étapes d'un ransomware : rapport complet, outil de récupération en Python et liste d'indicateurs de compromission.</p>
-            <div class="pf-tags"><span>Malware</span><span>Python</span><span>IOC</span></div>
-          </div>
-          <div class="media"><svg class="art" aria-hidden="true"><use href="#a-analyse-de-ransomware"/></svg><span class="media-tag">analyse-de-ransomware</span></div>
-        </article>
-        <article class="card pf" data-c="cyber">
-          <div class="pf-body">
-            <span class="pf-badge"><svg class="ico" aria-hidden="true"><use href="#i-cyber"/></svg>Cyber</span>
-            <h3>PoC Zero Trust</h3>
-            <p>Preuve de concept d'une architecture Zero Trust : aucun accès implicite, chaque flux est vérifié.</p>
-            <div class="pf-tags"><span>Zero Trust</span><span>Segmentation</span></div>
-          </div>
-          <div class="media"><svg class="art" aria-hidden="true"><use href="#a-poc-zero-trust"/></svg><span class="media-tag">poc-zero-trust</span></div>
-        </article>
-        <article class="card pf" data-c="devops">
-          <div class="pf-body">
-            <span class="pf-badge"><svg class="ico" aria-hidden="true"><use href="#i-devops"/></svg>DevOps</span>
-            <h3>Application conteneurisée</h3>
-            <p>Déploiement d'une application sous Docker avec supervision des métriques par Prometheus.</p>
-            <div class="pf-tags"><span>Docker</span><span>Prometheus</span></div>
-          </div>
-          <div class="media"><svg class="art" aria-hidden="true"><use href="#a-application-conteneurisee"/></svg><span class="media-tag">application-conteneurisee</span></div>
-        </article>
-        <article class="card pf" data-c="devops">
-          <div class="pf-body">
-            <span class="pf-badge"><svg class="ico" aria-hidden="true"><use href="#i-devops"/></svg>DevOps</span>
-            <h3>WorkTrack Pro</h3>
-            <p>Application web de suivi du travail qui affiche l'état d'avancement du développement de chaque module.</p>
-            <div class="pf-tags"><span>Web app</span><span>Suivi de projet</span></div>
-          </div>
-          <div class="media"><svg class="art" aria-hidden="true"><use href="#a-worktrack-pro"/></svg><span class="media-tag">worktrack-pro</span></div>
-        </article>
-        <article class="card pf" data-c="devops">
-          <div class="pf-body">
-            <span class="pf-badge"><svg class="ico" aria-hidden="true"><use href="#i-devops"/></svg>DevOps</span>
-            <h3>Pointage OCR</h3>
-            <p>Outil Python qui lit des fiches horaires manuscrites scannées en PDF et les exporte dans un Excel classé.</p>
-            <div class="pf-tags"><span>Python</span><span>OCR</span><span>Excel</span></div>
-          </div>
-          <div class="media"><svg class="art" aria-hidden="true"><use href="#a-pointage-ocr"/></svg><span class="media-tag">pointage-ocr</span></div>
-        </article>
-        <article class="card pf" data-c="ux">
-          <div class="pf-body">
-            <span class="pf-badge"><svg class="ico" aria-hidden="true"><use href="#i-ux"/></svg>UX design</span>
-            <h3>SilvereMusic Stream</h3>
-            <p>Application Android de streaming musical basée sur l'API Internet Archive, avec une interface repensée en thème violet sombre.</p>
-            <div class="pf-tags"><span>Android</span><span>Java</span><span>UI</span></div>
-          </div>
-          <div class="media"><svg class="art" aria-hidden="true"><use href="#a-silveremusic-stream"/></svg><span class="media-tag">silveremusic-stream</span></div>
-        </article>
-        <article class="card pf" data-c="graph">
-          <div class="pf-body">
-            <span class="pf-badge"><svg class="ico" aria-hidden="true"><use href="#i-graph"/></svg>Création graphique</span>
-            <h3>Chemin du Dragon</h3>
-            <p>Jeu de plateau en HTML5 avec adversaires contrôlés par IA et illustrations de dragons dessinées en SVG.</p>
-            <div class="pf-tags"><span>SVG</span><span>HTML5</span><span>Game design</span></div>
-          </div>
-          <div class="media"><svg class="art" aria-hidden="true"><use href="#a-chemin-du-dragon"/></svg><span class="media-tag">chemin-du-dragon</span></div>
-        </article>
-      </div>
+      <div class="car-track" id="track" tabindex="0"><!-- construit par assets/js/projects.js à partir de projets/projets.js --></div>
       <div class="car-nav">
         <button class="icon-btn" id="prev" type="button" aria-label="Projet précédent"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg></button>
         <div class="car-dots" id="dots"></div>
@@ -373,134 +225,7 @@
     <div class="more"><button class="btn" id="more" type="button" aria-expanded="false" aria-controls="all">Voir tous les projets</button></div>
     <!-- Liste complète, affichée par le bouton « Voir plus » et filtrée par catégorie -->
     <div class="grid g3 pg-grid" id="all" hidden>
-      <article class="card pg reveal" data-c="cyber">
-        <div class="media sm"><svg class="art" aria-hidden="true"><use href="#a-asr-sdn"/></svg><span class="media-tag">asr-sdn</span></div>
-        <div class="pg-body">
-          <h3>ASR-SDN</h3>
-          <p>Architecture SDN pour la détection, la segmentation et la réponse automatisée aux cyberattaques en réseau d'entreprise. Suricata détecte, un moteur Python décide, ONOS isole ou bloque l'hôte. Six scénarios validés en lab, temps de réponse moyen d'environ 0,09 s.</p>
-          <div class="pg-tags"><span>ONOS</span><span>Suricata</span><span>Python</span><span>Mininet</span></div>
-        </div>
-      </article>
-      <article class="card pg reveal" data-c="devops">
-        <div class="media sm"><svg class="art" aria-hidden="true"><use href="#a-site-web-poleit"/></svg><span class="media-tag">site-web-poleit</span></div>
-        <div class="pg-body">
-          <h3>Site web PoleIT</h3>
-          <p>Création d'un site vitrine, déployé avec Kubernetes et Docker, puis supervisé avec Prometheus et Grafana pour suivre son état en continu.</p>
-          <div class="pg-tags"><span>Kubernetes</span><span>Docker</span><span>Prometheus</span><span>Grafana</span></div>
-        </div>
-      </article>
-      <article class="card pg reveal" data-c="ux">
-        <div class="media sm"><svg class="art" aria-hidden="true"><use href="#a-maquettes-sims"/></svg><span class="media-tag">maquettes-sims</span></div>
-        <div class="pg-body">
-          <h3>Maquettes SIMS</h3>
-          <p>Maquettage et prototypage sous Figma des interfaces de la nouvelle application SIMS chez Les Menus Services, du parcours utilisateur aux écrans finaux.</p>
-          <div class="pg-tags"><span>Figma</span><span>Prototypage</span><span>Parcours utilisateur</span></div>
-        </div>
-      </article>
-      <article class="card pg reveal" data-c="devops">
-        <div class="media sm"><svg class="art" aria-hidden="true"><use href="#a-refonte-sims"/></svg><span class="media-tag">refonte-sims</span></div>
-        <div class="pg-body">
-          <h3>Refonte SIMS</h3>
-          <p>Conteneurisation, déploiement et supervision des applications du projet SIMS chez Les Menus Services, avec une chaîne CI/CD et des tableaux de bord de suivi.</p>
-          <div class="pg-tags"><span>Docker</span><span>CI/CD</span><span>Prometheus</span><span>Grafana</span></div>
-        </div>
-      </article>
-      <article class="card pg reveal" data-c="ux">
-        <div class="media sm"><svg class="art" aria-hidden="true"><use href="#a-application-mawemba"/></svg><span class="media-tag">application-mawemba</span></div>
-        <div class="pg-body">
-          <h3>Application Mawemba</h3>
-          <p>Conception des interfaces de l'application mobile Mawemba : UI, maquettage et prototypage sous Figma.</p>
-          <div class="pg-tags"><span>Figma</span><span>UI mobile</span><span>Prototypage</span></div>
-        </div>
-      </article>
-      <article class="card pg reveal" data-c="graph">
-        <div class="media sm"><svg class="art" aria-hidden="true"><use href="#a-identite-graphique-d-entreprises"/></svg><span class="media-tag">identite-graphique-d-entreprises</span></div>
-        <div class="pg-body">
-          <h3>Identité graphique d'entreprises</h3>
-          <p>Création d'identités visuelles et de supports de communication pour des entreprises.</p>
-          <div class="pg-tags"><span>Identité visuelle</span><span>Supports de communication</span></div>
-        </div>
-      </article>
-      <article class="card pg reveal" data-c="cyber">
-        <div class="media sm"><svg class="art" aria-hidden="true"><use href="#a-hardening-de-serveurs"/></svg><span class="media-tag">hardening-de-serveurs</span></div>
-        <div class="pg-body">
-          <h3>Hardening de serveurs</h3>
-          <p>Durcissement de systèmes Linux et Windows Server : réduction de la surface d'attaque et mise en place de politiques de sécurité.</p>
-          <div class="pg-tags"><span>Linux</span><span>Windows Server</span></div>
-        </div>
-      </article>
-      <article class="card pg reveal" data-c="cyber">
-        <div class="media sm"><svg class="art" aria-hidden="true"><use href="#a-pentest-en-lab"/></svg><span class="media-tag">pentest-en-lab</span></div>
-        <div class="pg-body">
-          <h3>Pentest en lab</h3>
-          <p>Tests d'intrusion en environnement de lab : reconnaissance, exploitation et rapport de vulnérabilités. Exemple : salle Ignite de TryHackMe, via la faille CVE-2018-16763 de Fuel CMS.</p>
-          <div class="pg-tags"><span>Pentest</span><span>TryHackMe</span></div>
-        </div>
-      </article>
-      <article class="card pg reveal" data-c="cyber">
-        <div class="media sm"><svg class="art" aria-hidden="true"><use href="#a-reverse-engineering"/></svg><span class="media-tag">reverse-engineering</span></div>
-        <div class="pg-body">
-          <h3>Reverse engineering</h3>
-          <p>Analyse de binaires pour comprendre le fonctionnement interne d'applications.</p>
-          <div class="pg-tags"><span>Analyse de binaires</span></div>
-        </div>
-      </article>
-      <article class="card pg reveal" data-c="cyber">
-        <div class="media sm"><svg class="art" aria-hidden="true"><use href="#a-analyse-de-ransomware"/></svg><span class="media-tag">analyse-de-ransomware</span></div>
-        <div class="pg-body">
-          <h3>Analyse de ransomware</h3>
-          <p>Analyse en cinq étapes d'un ransomware : rapport complet, outil de récupération en Python et liste d'indicateurs de compromission.</p>
-          <div class="pg-tags"><span>Malware</span><span>Python</span><span>IOC</span></div>
-        </div>
-      </article>
-      <article class="card pg reveal" data-c="cyber">
-        <div class="media sm"><svg class="art" aria-hidden="true"><use href="#a-poc-zero-trust"/></svg><span class="media-tag">poc-zero-trust</span></div>
-        <div class="pg-body">
-          <h3>PoC Zero Trust</h3>
-          <p>Preuve de concept d'une architecture Zero Trust : aucun accès implicite, chaque flux est vérifié.</p>
-          <div class="pg-tags"><span>Zero Trust</span><span>Segmentation</span></div>
-        </div>
-      </article>
-      <article class="card pg reveal" data-c="devops">
-        <div class="media sm"><svg class="art" aria-hidden="true"><use href="#a-application-conteneurisee"/></svg><span class="media-tag">application-conteneurisee</span></div>
-        <div class="pg-body">
-          <h3>Application conteneurisée</h3>
-          <p>Déploiement d'une application sous Docker avec supervision des métriques par Prometheus.</p>
-          <div class="pg-tags"><span>Docker</span><span>Prometheus</span></div>
-        </div>
-      </article>
-      <article class="card pg reveal" data-c="devops">
-        <div class="media sm"><svg class="art" aria-hidden="true"><use href="#a-worktrack-pro"/></svg><span class="media-tag">worktrack-pro</span></div>
-        <div class="pg-body">
-          <h3>WorkTrack Pro</h3>
-          <p>Application web de suivi du travail qui affiche l'état d'avancement du développement de chaque module.</p>
-          <div class="pg-tags"><span>Web app</span><span>Suivi de projet</span></div>
-        </div>
-      </article>
-      <article class="card pg reveal" data-c="devops">
-        <div class="media sm"><svg class="art" aria-hidden="true"><use href="#a-pointage-ocr"/></svg><span class="media-tag">pointage-ocr</span></div>
-        <div class="pg-body">
-          <h3>Pointage OCR</h3>
-          <p>Outil Python qui lit des fiches horaires manuscrites scannées en PDF et les exporte dans un Excel classé.</p>
-          <div class="pg-tags"><span>Python</span><span>OCR</span><span>Excel</span></div>
-        </div>
-      </article>
-      <article class="card pg reveal" data-c="ux">
-        <div class="media sm"><svg class="art" aria-hidden="true"><use href="#a-silveremusic-stream"/></svg><span class="media-tag">silveremusic-stream</span></div>
-        <div class="pg-body">
-          <h3>SilvereMusic Stream</h3>
-          <p>Application Android de streaming musical basée sur l'API Internet Archive, avec une interface repensée en thème violet sombre.</p>
-          <div class="pg-tags"><span>Android</span><span>Java</span><span>UI</span></div>
-        </div>
-      </article>
-      <article class="card pg reveal" data-c="graph">
-        <div class="media sm"><svg class="art" aria-hidden="true"><use href="#a-chemin-du-dragon"/></svg><span class="media-tag">chemin-du-dragon</span></div>
-        <div class="pg-body">
-          <h3>Chemin du Dragon</h3>
-          <p>Jeu de plateau en HTML5 avec adversaires contrôlés par IA et illustrations de dragons dessinées en SVG.</p>
-          <div class="pg-tags"><span>SVG</span><span>HTML5</span><span>Game design</span></div>
-        </div>
-      </article>
+      <!-- construit par assets/js/projects.js -->
     </div>
   </div>
 </div></section>
@@ -573,6 +298,12 @@
     <h2>Réactions et commentaires</h2>
     <div id="giscus"></div>
   </section>
+</main>
+
+<main class="project wrap" id="view-project" hidden>
+  <a class="back" href="#projets"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>Tous les projets</a>
+  <!-- Fiche construite par assets/js/project-view.js : l'adresse #projet/slug affiche le projet et projets/slug.md -->
+  <div id="p-root" aria-live="polite"></div>
 </main>
 
 <footer>
