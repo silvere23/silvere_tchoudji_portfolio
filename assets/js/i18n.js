@@ -53,11 +53,11 @@
     "Cisco Certified Network Professional : réseaux d'entreprise avancés.": "Cisco Certified Network Professional: advanced enterprise networking.",
     "Certification Amazon Web Services : services et architecture cloud.": "Amazon Web Services certification: cloud services and architecture.",
     // formation
-    "Mastère Cybersécurité et Cloud Computing": "Master's in Cybersecurity and Cloud Computing", "IPSSI, Lille · Bac+5": "IPSSI, Lille · Master's level (5 years)",
-    "Formation en alternance. Projet de soutenance : ASR-SDN.": "Work-study programme. Final project: ASR-SDN.",
-    "Bachelor Architecture des Systèmes d'Information et DevOps": "Bachelor's in Information Systems Architecture and DevOps",
-    "École-IT, Valenciennes · Bac+3": "École-IT, Valenciennes · Bachelor's level (3 years)",
-    "Architecture des systèmes d'information et pratiques DevOps.": "Information systems architecture and DevOps practices.",
+    "2024 – 2026": "2024 – 2026", "Mastère Cybersécurité et Cloud Computing · Bac+5": "Master's in Cybersecurity and Cloud Computing · 5‑year degree",
+    "Lille, France · En alternance": "Lille, France · Work-study", "Projet de soutenance : ASR-SDN": "Final project: ASR-SDN",
+    "Architecture SDN de détection et de réponse automatisée aux cyberattaques.": "SDN architecture for detecting and automatically responding to cyberattacks.",
+    "Bachelor Architecture des Systèmes d'Information et DevOps · Bac+3": "Bachelor's in Information Systems Architecture and DevOps · 3‑year degree",
+    "Architecture SI et DevOps": "IS architecture and DevOps", "Conception des systèmes d'information et pratiques DevOps.": "Information systems design and DevOps practices.",
     // contact
     "Construisons": "Let's build", "quelque chose de solide": "something solid", "Une opportunité, un projet ou une question ? Écris-moi.": "An opportunity, a project or a question? Write to me.",
     "Envoyer un message": "Send a message", "Nom": "Name", "Envoyer": "Send", "Le message s'ouvre dans ton application de messagerie.": "The message opens in your email app.",

@@ -569,3 +569,21 @@ footer .wrap{display:flex;justify-content:space-between;align-items:center;gap:1
 .lang-btn{font:700 .78rem var(--display);letter-spacing:.04em}
 html.lang-wait body{visibility:hidden;animation:lang-show 0s 1s forwards}
 @keyframes lang-show{to{visibility:visible}}
+
+/* Formation : école en titre, diplôme, lieu et encadré mis en avant */
+.edu{--k1:var(--primary-2);--k2:var(--accent);display:flex;gap:20px;align-items:flex-start;padding:28px;transition:transform .45s cubic-bezier(.16,1,.3,1),border-color .35s,box-shadow .45s}
+.edu:hover{transform:translateY(-4px);border-color:color-mix(in srgb,var(--k1) 40%,var(--border));box-shadow:0 22px 44px -26px color-mix(in srgb,var(--k2) 55%,transparent)}
+.edu-ico{flex:none;width:46px;height:46px;display:grid;place-items:center;border-radius:14px;color:var(--k1);background:color-mix(in srgb,var(--k1) 14%,transparent);transition:transform .45s cubic-bezier(.16,1,.3,1)}
+.edu-ico svg{width:22px;height:22px}
+.edu:hover .edu-ico{transform:rotate(-8deg) scale(1.06)}
+.edu-body{flex:1;min-width:0;display:flex;flex-direction:column;height:100%}
+.edu-date{font:600 .72rem var(--display);letter-spacing:.1em;text-transform:uppercase;color:var(--k1)}
+.edu h3{font-size:1.15rem;margin:6px 0 6px}
+.edu-degree{color:var(--text-2);font-size:.95rem;line-height:1.5}
+.edu-place{color:var(--muted);font-size:.85rem;margin-top:4px}
+.edu-note{display:flex;gap:12px;align-items:flex-start;margin-top:auto;padding:14px 16px;border-radius:14px;border:1px solid var(--border);background:var(--soft)}
+.edu-place{margin-bottom:20px}
+.edu-note svg{flex:none;width:18px;height:18px;color:var(--green);margin-top:2px}
+.edu-note b{display:block;font-size:.85rem;font-weight:600;color:var(--text)}
+.edu-note span{display:block;font-size:.8rem;color:var(--muted);line-height:1.5;margin-top:2px}
+@media (max-width:520px){.edu{flex-direction:column;gap:14px;padding:22px}}
