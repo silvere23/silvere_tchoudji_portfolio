@@ -20,14 +20,14 @@ window.projectVisual = (p, big) => {
 };
 
 (() => {
-  const list = window.PROJECTS || [];
+  const list = (window.PROJECTS || []).map(loc);             // dans la langue du site
   const el = (tag, cls, text) => { const e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; };
   const icon = cat => { const s = window.projectVisual({ slug: "", cat }); s.setAttribute("class", "ico"); return s; };
   const tags = (cls, items) => { const d = el("div", cls); (items || []).forEach(t => d.appendChild(el("span", "", t))); return d; };
   const media = (p, cls) => { const m = el("div", cls); m.appendChild(projectVisual(p)); m.appendChild(el("span", "media-tag", p.slug)); return m; };
   const open = p => {
-    const a = el("a", "p-open", "Voir le projet"); a.href = "#projet/" + p.slug;
-    a.setAttribute("aria-label", "Voir le projet " + p.title);
+    const a = el("a", "p-open", t("Voir le projet")); a.href = "#projet/" + p.slug;
+    a.setAttribute("aria-label", t("Voir le projet") + " " + p.title);
     a.insertAdjacentHTML("beforeend", '<svg class="arr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>');
     return a;
   };

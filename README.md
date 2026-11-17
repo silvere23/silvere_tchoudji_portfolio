@@ -14,6 +14,7 @@ En ligne : https://silvere23.github.io/silvere_tchoudji_portfolio/
 ├── projets/
 │   ├── projets.js          Liste de tous les projets : c'est le fichier à modifier pour en ajouter un
 │   ├── *.md                Texte de la fiche de chaque projet
+│   ├── en/*.md             Version anglaise des fiches
 │   └── img/<slug>/         Images d'un projet (galerie, couverture)
 ├── blog/
 │   ├── posts.json          Liste des articles : titre, date, thèmes, résumé
@@ -31,6 +32,7 @@ En ligne : https://silvere23.github.io/silvere_tchoudji_portfolio/
     │   └── style.css       Tous les styles
     ├── js/
     │   ├── config.js       E-mail, GitHub, LinkedIn, chemin du CV, réglages des commentaires
+│   ├── i18n.js         Traduction anglaise : dictionnaire et bouton FR / EN
     │   ├── common.js       Menu, thème, liens : chargé sur toutes les pages
     │   ├── projects.js     Construit les cartes, le carrousel, le diaporama et le compteur
 │   ├── project-view.js Fiche projet, mise en page selon le type (tech, ux, graph)
@@ -91,6 +93,16 @@ Le type est déduit de la catégorie. On peut le forcer avec `type: "graph"`, pa
 - `cover` remplace l'illustration de la carte par une image.
 - Les illustrations des cartes sont dessinées en SVG dans `index.html` (symboles `a-<slug>`), générées par `tools/illustrations.py`. Un projet sans illustration affiche l'icône de sa catégorie.
 - La durée d'affichage d'un projet dans le carrousel se règle avec `DELAY` dans `assets/js/main.js`.
+
+## Langues (français / anglais)
+
+Le site est écrit en français dans `index.html`. La version anglaise est appliquée par `assets/js/i18n.js`.
+
+- **Choix de la langue** : bouton FR / EN dans la barre de navigation (mémorisé). Sans choix, la langue du navigateur décide. Lien direct vers la version anglaise : `https://silvere23.github.io/silvere_tchoudji_portfolio/?lang=en`.
+- **Modifier ou ajouter un texte** : changer le texte en français dans `index.html`, puis ajouter ou mettre à jour la ligne `"texte français": "English text"` dans le dictionnaire `EN` de `assets/js/i18n.js`. Un texte absent du dictionnaire reste en français.
+- **Paragraphes avec du gras** : ils portent `data-i18n="clé"` et leur version anglaise est dans `BLOCKS`, dans le même fichier.
+- **Projets** : champ `en` de chaque projet dans `projets/projets.js`, et texte de la fiche dans `projets/en/<slug>.md`. Sans version anglaise, la version française s'affiche.
+- **Blog** : l'interface est traduite, les articles restent en français.
 
 ## Blog
 

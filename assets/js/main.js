@@ -52,7 +52,7 @@ document.querySelectorAll(".tool-track").forEach(t => [...t.children].forEach(c 
 // projets : carrousel automatique, filtres par catégorie, bouton « voir plus »
 (() => {
   const DELAY = 5000;                                   // durée d'affichage d'un projet, en millisecondes
-  const NAMES = { cyber: "Cyber", devops: "DevOps", ux: "UX design", graph: "Création graphique" };
+  const NAMES = { cyber: "Cyber", devops: "DevOps", ux: "UX design", graph: t("Création graphique") };
   const box = document.getElementById("carousel"), track = document.getElementById("track"), dots = document.getElementById("dots");
   const more = document.getElementById("more"), grid = document.getElementById("all");
   const slides = [...track.children], cards = [...grid.children];
@@ -86,14 +86,16 @@ document.querySelectorAll(".tool-track").forEach(t => [...t.children].forEach(c 
     dots.textContent = "";
     shown().forEach((s, i) => {
       const d = document.createElement("button"); d.type = "button";
-      d.setAttribute("aria-label", "Projet " + (i + 1) + " : " + s.querySelector("h3").textContent);
+      d.setAttribute("aria-label", t("Projet") + " " + (i + 1) + " : " + s.querySelector("h3").textContent);
       d.addEventListener("click", () => go(i)); dots.appendChild(d);
     });
     label(); go(0, false);
   }
   function label() {
     const n = cards.filter(c => !c.classList.contains("hide")).length;
-    more.textContent = grid.hidden ? "Voir les " + n + " projets" + (filter === "all" ? "" : " " + NAMES[filter]) : "Réduire la liste";
+    more.textContent = !grid.hidden ? t("Réduire la liste") : LANG === "en"
+      ? "View the " + n + (filter === "all" ? "" : " " + NAMES[filter]) + " projects"
+      : "Voir les " + n + " projets" + (filter === "all" ? "" : " " + NAMES[filter]);
   }
 
   document.getElementById("prev").addEventListener("click", () => go(index - 1));
@@ -141,7 +143,7 @@ document.getElementById("projs").addEventListener("click", e => {
 document.getElementById("form").addEventListener("submit", e => {
   e.preventDefault();
   const f = new FormData(e.target);
-  location.href = "mailto:" + CONFIG.email + "?subject=" + encodeURIComponent("Contact portfolio : " + f.get("nom")) + "&body=" + encodeURIComponent(f.get("msg") + "\n\n" + f.get("nom") + " · " + f.get("mail"));
+  location.href = "mailto:" + CONFIG.email + "?subject=" + encodeURIComponent(t("Contact portfolio : ") + f.get("nom")) + "&body=" + encodeURIComponent(f.get("msg") + "\n\n" + f.get("nom") + " · " + f.get("mail"));
 });
 
 // accueil : projets phares en fondu automatique

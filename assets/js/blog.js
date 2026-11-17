@@ -5,7 +5,7 @@
   const home = document.getElementById("view-home"), vList = document.getElementById("view-blog"), vArticle = document.getElementById("view-article");
   const list = document.getElementById("posts"), tagsBox = document.getElementById("tags"), empty = document.getElementById("empty");
   const body = document.getElementById("a-body"), baseTitle = document.title;
-  const fmtDate = d => new Date(d + "T00:00:00").toLocaleDateString("fr-FR", { day: "numeric", month: "long", year: "numeric" });
+  const fmtDate = d => new Date(d + "T00:00:00").toLocaleDateString(LANG === "en" ? "en-GB" : "fr-FR", { day: "numeric", month: "long", year: "numeric" });
   const el = (tag, cls, text) => { const e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; };
   const fail = (box, msg) => { box.textContent = ""; box.appendChild(el("p", "blog-empty", msg)); };
 
@@ -20,7 +20,7 @@
   async function showList() {
     let posts;
     try { posts = await loadPosts(); }
-    catch (e) { loading = null; return fail(list, "Impossible de charger les articles. En local, le site doit être ouvert via un serveur (voir le README)."); }
+    catch (e) { loading = null; return fail(list, t("Impossible de charger les articles. En local, le site doit être ouvert via un serveur (voir le README).")); }
     const render = () => {
       list.textContent = "";
       const shown = posts.filter(p => !current || (p.tags || []).includes(current));
@@ -35,7 +35,7 @@
     if (!built) {
       built = true;
       ["", ...new Set(posts.flatMap(p => p.tags || []))].forEach(tag => {
-        const b = el("button", tag === "" ? "on" : "", tag || "Tous"); b.type = "button";
+        const b = el("button", tag === "" ? "on" : "", tag || t("Tous")); b.type = "button";
         b.addEventListener("click", () => { current = tag; [...tagsBox.children].forEach(x => x.classList.toggle("on", x === b)); render(); });
         tagsBox.appendChild(b);
       });
@@ -47,22 +47,22 @@
   async function showArticle(slug) {
     const title = document.getElementById("a-title"), meta = document.getElementById("a-meta"), tags = document.getElementById("a-tags");
     const box = document.getElementById("comments");
-    tags.textContent = ""; meta.textContent = ""; body.textContent = ""; title.textContent = "Chargement…"; box.hidden = true;
+    tags.textContent = ""; meta.textContent = ""; body.textContent = ""; title.textContent = t("Chargement…"); box.hidden = true;
     let post;
     try { post = (await loadPosts()).find(p => p.slug === slug); }
-    catch (e) { loading = null; title.textContent = "Article indisponible"; return fail(body, "Impossible de charger les articles."); }
-    if (!post) { title.textContent = "Article introuvable"; return fail(body, "Cet article n'existe pas ou a été déplacé."); }
+    catch (e) { loading = null; title.textContent = t("Article indisponible"); return fail(body, t("Impossible de charger les articles.")); }
+    if (!post) { title.textContent = t("Article introuvable"); return fail(body, t("Cet article n'existe pas ou a été déplacé.")); }
     title.textContent = post.title; document.title = post.title + " | Silvere Tchoudji";
     (post.tags || []).forEach(x => tags.appendChild(el("span", "", x)));
     try {
       const r = await fetch("blog/" + encodeURIComponent(post.slug) + ".md", { cache: "no-cache" });
       if (!r.ok) throw new Error(r.status);
       const md = await r.text();
-      meta.textContent = fmtDate(post.date) + " · " + Math.max(1, Math.round(md.split(/\s+/).length / 200)) + " min de lecture";
+      meta.textContent = fmtDate(post.date) + " · " + Math.max(1, Math.round(md.split(/\s+/).length / 200)) + " " + t("min de lecture");
       // Markdown converti en HTML, puis nettoyé avant d'être inséré dans la page
       body.innerHTML = DOMPurify.sanitize(marked.parse(md));
       body.querySelectorAll("a[href^='http']").forEach(a => { a.target = "_blank"; a.rel = "noopener"; });
-    } catch (e) { return fail(body, "Impossible de charger cet article."); }
+    } catch (e) { return fail(body, t("Impossible de charger cet article.")); }
     box.hidden = false; comments(post.slug);
   }
 
@@ -72,12 +72,12 @@
     const box = document.getElementById("giscus"), g = (typeof CONFIG !== "undefined" && CONFIG.giscus) || {};
     box.textContent = "";
     if (!g.repo || !g.repoId || !g.categoryId) {
-      return box.appendChild(el("p", "blog-empty", "Les réactions et les commentaires seront disponibles dès que le blog sera relié à GitHub."));
+      return box.appendChild(el("p", "blog-empty", t("Les réactions et les commentaires seront disponibles dès que le blog sera relié à GitHub.")));
     }
     const s = document.createElement("script");
     s.src = "https://giscus.app/client.js"; s.async = true; s.crossOrigin = "anonymous";
     const attrs = { repo: g.repo, "repo-id": g.repoId, category: g.category, "category-id": g.categoryId, mapping: "specific", term: slug, strict: "1",
-      "reactions-enabled": "1", "emit-metadata": "0", "input-position": "top", theme: theme(), lang: "fr", loading: "lazy" };
+      "reactions-enabled": "1", "emit-metadata": "0", "input-position": "top", theme: theme(), lang: LANG, loading: "lazy" };
     Object.entries(attrs).forEach(([k, v]) => s.setAttribute("data-" + k, v));
     box.appendChild(s);
   }

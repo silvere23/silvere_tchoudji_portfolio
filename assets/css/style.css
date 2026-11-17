@@ -564,3 +564,8 @@ footer .wrap{display:flex;justify-content:space-between;align-items:center;gap:1
 .skill .tag{transition:border-color .25s,color .25s,background .25s}
 .skill:hover .tag{border-color:color-mix(in srgb,var(--k1) 30%,var(--border))}
 .skill .tag:hover{color:var(--text);background:color-mix(in srgb,var(--k1) 18%,transparent);border-color:var(--k1)}
+
+/* Langue : bouton FR / EN, et page masquée le temps de la traduction (sécurité : réaffichée au bout d'une seconde) */
+.lang-btn{font:700 .78rem var(--display);letter-spacing:.04em}
+html.lang-wait body{visibility:hidden;animation:lang-show 0s 1s forwards}
+@keyframes lang-show{to{visibility:visible}}
