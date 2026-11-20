@@ -189,6 +189,9 @@ section{padding:clamp(64px,8vw,84px) 0;position:relative}
 .xp.open .xp-inner{visibility:visible}
 .xp-body{padding:24px 32px 28px;border-top:1px solid var(--border)}
 .xp-points{display:grid;gap:12px}
+.xp-intro{color:var(--text-2);line-height:1.7;margin-bottom:14px}
+.xp-sub{font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:12px}
+.xp-points b{color:var(--text);font-weight:600}
 .xp-points li{display:flex;gap:12px;align-items:flex-start;color:var(--text-2);line-height:1.6;opacity:0;transform:translateY(8px);transition:opacity .4s,transform .4s cubic-bezier(.16,1,.3,1)}
 .xp.open .xp-points li{opacity:1;transform:none}
 .xp.open .xp-points li:nth-child(2){transition-delay:.07s}
