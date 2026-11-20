@@ -43,6 +43,14 @@
     "Support technique : diagnostic et résolution des pannes réseau de premier niveau.": "Technical support: diagnosing and fixing first-level network issues.",
     "Serveurs": "Servers", "Juin 2020 · Sept. 2020": "Jun 2020 · Sep 2020", "3 mois": "3 mos",
     "Mise en place d'un système de détection d'intrusion avec Suricata, pfSense et GNS3.": "Set up an intrusion detection system with Suricata, pfSense and GNS3.",
+    // freelance
+    "2019 · 2024": "2019 · 2024", "Freelance": "Freelance", "5 ans": "5 yrs", "Designer graphique & UX/UI Designer": "Graphic Designer & UX/UI Designer",
+    "En tant que designer graphique et UX/UI designer freelance, j’ai accompagné différentes entreprises dans le développement de leur identité visuelle et de leur présence digitale.": "As a freelance graphic and UX/UI designer, I helped a range of businesses develop their visual identity and digital presence.",
+    "Mes principales missions :": "Main responsibilities:",
+    "Identité visuelle :": "Visual identity:", "création et conception d’identités graphiques et de chartes graphiques pour les entreprises.": "creating and designing brand identities and brand guidelines for businesses.",
+    "Communication visuelle :": "Visual communication:", "conception de supports de communication print et digitaux.": "designing print and digital communication materials.",
+    "UX/UI Design :": "UX/UI design:", "conception de maquettes et de prototypes interactifs pour des sites web et des applications.": "designing mockups and interactive prototypes for websites and apps.",
+    "Expérience utilisateur :": "User experience:", "réflexion sur l’ergonomie, la navigation et l’optimisation des interfaces afin d'améliorer l’expérience utilisateur.": "working on usability, navigation and interface optimisation to improve the user experience.",
     // projets
     "Tous": "All", "Création graphique": "Graphic design", "Filtrer par thème": "Filter by topic", "Projet précédent": "Previous project", "Projet suivant": "Next project",
     "Voir le projet": "View project", "Réduire la liste": "Show less", "Projet": "Project",
