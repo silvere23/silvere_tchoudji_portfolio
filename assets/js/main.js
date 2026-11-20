@@ -93,9 +93,8 @@ document.querySelectorAll(".tool-track").forEach(t => [...t.children].forEach(c 
   }
   function label() {
     const n = cards.filter(c => !c.classList.contains("hide")).length;
-    more.textContent = !grid.hidden ? t("Réduire la liste") : LANG === "en"
-      ? "View the " + n + (filter === "all" ? "" : " " + NAMES[filter]) + " projects"
-      : "Voir les " + n + " projets" + (filter === "all" ? "" : " " + NAMES[filter]);
+    if (filter !== "all") { more.textContent = LANG === "en" ? "Explore the " + n + " " + NAMES[filter] + " projects →" : "Découvrir les " + n + " projets " + NAMES[filter] + " →"; return; }
+    more.textContent = !grid.hidden ? t("Réduire la liste") : LANG === "en" ? "View the " + n + " projects" : "Voir les " + n + " projets";
   }
 
   document.getElementById("prev").addEventListener("click", () => go(index - 1));
@@ -105,7 +104,11 @@ document.querySelectorAll(".tool-track").forEach(t => [...t.children].forEach(c 
     document.querySelectorAll("#filters button").forEach(x => x.classList.toggle("on", x === b));
     applyFilter(b.dataset.f);
   });
-  more.addEventListener("click", () => { grid.hidden = !grid.hidden; more.setAttribute("aria-expanded", !grid.hidden); label(); });
+  // « Tous » : déplie la liste complète ; une catégorie : ouvre sa page dédiée (#projets/devops…)
+  more.addEventListener("click", () => {
+    if (filter !== "all") { location.hash = "projets/" + filter; return; }
+    grid.hidden = !grid.hidden; more.setAttribute("aria-expanded", !grid.hidden); label();
+  });
 
   // glissement manuel : on retrouve le projet le plus proche, puis le défilement automatique reprend
   let settle = 0;

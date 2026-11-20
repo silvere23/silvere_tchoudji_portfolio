@@ -88,22 +88,34 @@
   }).observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] });
 
   /* ---------- navigation : quelle vue afficher selon la fin de l'adresse ---------- */
-  const vProject = document.getElementById("view-project");
-  let homeY = 0;
+  const vProject = document.getElementById("view-project"), vCat = document.getElementById("view-cat");
+  let homeY = 0, prev = "";
+  const catY = {};
   function route() {
     const hash = decodeURIComponent(location.hash.slice(1));
     const onList = hash === "blog", onArticle = hash.startsWith("article-"), onProject = hash.startsWith("projet/");
-    const away = onList || onArticle || onProject;
+    const cat = (hash.match(/^projets\/(\w+)$/) || [])[1], onCat = !!cat && CategoryView.has(cat);
+    const prevCat = (prev.match(/^projets\/(\w+)$/) || [])[1];
+    if (prevCat && !onCat) catY[prevCat] = scrollY;           // position dans la page de catégorie, pour y revenir
+    const away = onList || onArticle || onProject || onCat;
     const wasAway = home.hidden;
     if (away && !wasAway) homeY = scrollY;                       // position sur l'accueil, pour y revenir
-    home.hidden = away; vList.hidden = !onList; vArticle.hidden = !onArticle; vProject.hidden = !onProject;
+    home.hidden = away; vList.hidden = !onList; vArticle.hidden = !onArticle; vProject.hidden = !onProject; vCat.hidden = !onCat;
     document.querySelectorAll("#links a").forEach(a => a.classList.toggle("active",
-      (onList || onArticle) ? a.getAttribute("href") === "#blog" : onProject && a.getAttribute("href") === "#projets"));
+      (onList || onArticle) ? a.getAttribute("href") === "#blog" : (onProject || onCat) && a.getAttribute("href") === "#projets"));
     if (away) {
       scrollTo(0, 0);
       if (onList) { document.title = "Blog | Silvere Tchoudji"; showList(); }
       else if (onArticle) showArticle(hash.slice(8));
-      else ProjectView.show(hash.slice(7));
+      else if (onCat) { CategoryView.show(cat); if (prev.startsWith("projet/") && catY[cat]) scrollTo(0, catY[cat]); }
+      else {
+        // depuis une page de catégorie, le retour ramène à cette page
+        const back = vProject.querySelector(".back"), from = prevCat || (prev.startsWith("projet/") ? back.dataset.cat : "");
+        back.dataset.cat = from || "";
+        back.href = from ? "#projets/" + from : "#projets";
+        back.lastChild.nodeValue = from ? CategoryView.title(from) : t("Tous les projets");
+        ProjectView.show(hash.slice(7));
+      }
     } else if (wasAway) {
       // retour au portfolio : on recalcule les éléments qui dépendent de la taille, puis on va à la section demandée
       document.title = baseTitle;
@@ -113,6 +125,7 @@
       if ((!hash || hash === "projets") && homeY) scrollTo(0, hash === "projets" ? Math.max(homeY, 0) : homeY);
       else if (target) target.scrollIntoView(); else scrollTo(0, 0);
     }
+    prev = hash;
   }
   addEventListener("hashchange", route);
   route();
