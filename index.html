@@ -16,19 +16,20 @@
 <meta property="og:description" content="Portfolio de Silvere Tchoudji, ingénieur DevOps & Cloud, cybersécurité et UX design.">
 <meta property="og:locale" content="fr_FR">
 <script src="assets/js/config.js?v=e34d4bcc" defer></script>
-<script src="assets/js/i18n.js?v=a7569793" defer></script>
+<script src="assets/js/i18n.js?v=2a6608df" defer></script>
 <script src="assets/js/common.js?v=00c05156" defer></script>
-<script src="projets/projets.js?v=b4ade5a2" defer></script>
+<script src="projets/projets.js?v=c0cc101d" defer></script>
 <script src="assets/js/projects.js?v=e8d5a352" defer></script>
-<script src="assets/js/main.js?v=2764b413" defer></script>
+<script src="assets/js/main.js?v=21260c7d" defer></script>
 <script src="assets/js/vendor/marked.umd.js?v=60203f84" defer></script>
 <script src="assets/js/vendor/purify.min.js?v=d8258bd1" defer></script>
+<script src="assets/js/category-view.js?v=33a37d8b" defer></script>
 <script src="assets/js/project-view.js?v=9c5fc3cc" defer></script>
-<script src="assets/js/blog.js?v=456821aa" defer></script>
+<script src="assets/js/blog.js?v=02c79af5" defer></script>
 <script src="assets/js/background.js?v=6539b691" defer></script>
 <link rel="preload" href="assets/fonts/space-grotesk-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
 <script src="assets/js/theme.js?v=62774aec"></script>
-<link rel="stylesheet" href="assets/css/style.css?v=84cfe752">
+<link rel="stylesheet" href="assets/css/style.css?v=518b7f91">
 </head>
 <body>
 <div class="bg" aria-hidden="true"></div>
@@ -302,6 +303,14 @@
     <h2>Réactions et commentaires</h2>
     <div id="giscus"></div>
   </section>
+</main>
+
+<main class="catview" id="view-cat" hidden>
+  <div class="wrap">
+    <a class="back" href="#projets"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>Tous les projets</a>
+    <!-- Page d'une catégorie construite par assets/js/category-view.js : #projets/devops, cyber, ux, graph -->
+    <div id="c-root" aria-live="polite"></div>
+  </div>
 </main>
 
 <main class="project wrap" id="view-project" hidden>

@@ -83,33 +83,33 @@ window.PROJECTS = [
     gallery: [], palette: [], fonts: []
   },
   {
-    slug: "hardening-de-serveurs", title: "Hardening de serveurs", cat: "cyber", badge: "Cyber",
-    en: {"title": "Server hardening", "badge": "Cyber", "summary": "Hardening of Linux and Windows Server systems: reducing the attack surface and enforcing security policies."},
+    slug: "hardening-de-serveurs", title: "Hardening de serveurs", cat: "cyber", badge: "Durcissement",
+    en: {"title": "Server hardening", "badge": "Hardening", "summary": "Hardening of Linux and Windows Server systems: reducing the attack surface and enforcing security policies."},
     summary: "Durcissement de systèmes Linux et Windows Server : réduction de la surface d'attaque et mise en place de politiques de sécurité.",
     tags: ["Linux", "Windows Server", "Active Directory"]
   },
   {
-    slug: "pentest-en-lab", title: "Pentest en lab", cat: "cyber", badge: "Cyber",
-    en: {"title": "Lab penetration testing", "badge": "Cyber", "summary": "Penetration tests in a lab environment: reconnaissance, exploitation and vulnerability reporting. Example: the TryHackMe Ignite room, through the Fuel CMS CVE-2018-16763 vulnerability."},
+    slug: "pentest-en-lab", title: "Pentest en lab", cat: "cyber", badge: "Test d'intrusion",
+    en: {"title": "Lab penetration testing", "badge": "Penetration test", "summary": "Penetration tests in a lab environment: reconnaissance, exploitation and vulnerability reporting. Example: the TryHackMe Ignite room, through the Fuel CMS CVE-2018-16763 vulnerability."},
     summary: "Tests d'intrusion en environnement de lab : reconnaissance, exploitation et rapport de vulnérabilités. Exemple : salle Ignite de TryHackMe, via la faille CVE-2018-16763 de Fuel CMS.",
     tags: ["Pentest", "TryHackMe", "Nmap", "Python"]
   },
   {
-    slug: "reverse-engineering", title: "Reverse engineering", cat: "cyber", badge: "Cyber",
-    en: {"badge": "Cyber", "summary": "Binary analysis to understand how applications work internally.", "tags": ["Binary analysis", "Disassembly"]},
+    slug: "reverse-engineering", title: "Reverse engineering", cat: "cyber", badge: "Analyse de binaires",
+    en: {"badge": "Binary analysis", "summary": "Binary analysis to understand how applications work internally.", "tags": ["Binary analysis", "Disassembly"]},
     summary: "Analyse de binaires pour comprendre le fonctionnement interne d'applications.",
     tags: ["Analyse de binaires", "Désassemblage"]
   },
   {
-    slug: "analyse-de-ransomware", title: "Analyse de ransomware", cat: "cyber", badge: "Cyber",
-    en: {"title": "Ransomware analysis", "badge": "Cyber", "summary": "Five-step analysis of a ransomware sample: full report, Python recovery tool and list of indicators of compromise.", "kpis": [{"value": "5", "label": "analysis steps"}, {"value": "14", "label": "report pages"}]},
+    slug: "analyse-de-ransomware", title: "Analyse de ransomware", cat: "cyber", badge: "Analyse de malware",
+    en: {"title": "Ransomware analysis", "badge": "Malware analysis", "summary": "Five-step analysis of a ransomware sample: full report, Python recovery tool and list of indicators of compromise.", "kpis": [{"value": "5", "label": "analysis steps"}, {"value": "14", "label": "report pages"}]},
     summary: "Analyse en cinq étapes d'un ransomware : rapport complet, outil de récupération en Python et liste d'indicateurs de compromission.",
     tags: ["Malware", "Python", "IOC"],
     kpis: [{ value: "5", label: "étapes d'analyse" }, { value: "14", label: "pages de rapport" }]
   },
   {
-    slug: "poc-zero-trust", title: "PoC Zero Trust", cat: "cyber", badge: "Cyber",
-    en: {"title": "Zero Trust PoC", "badge": "Cyber", "summary": "Proof of concept of a Zero Trust architecture: no implicit access, every flow is verified."},
+    slug: "poc-zero-trust", title: "PoC Zero Trust", cat: "cyber", badge: "Architecture",
+    en: {"title": "Zero Trust PoC", "badge": "Architecture", "summary": "Proof of concept of a Zero Trust architecture: no implicit access, every flow is verified."},
     summary: "Preuve de concept d'une architecture Zero Trust : aucun accès implicite, chaque flux est vérifié.",
     tags: ["Zero Trust", "Segmentation", "NIST SP 800-207"]
   },

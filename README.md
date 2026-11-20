@@ -87,6 +87,10 @@ Tous les projets sont décrits dans `projets/projets.js`. Les cartes, le carrous
 
 Le type est déduit de la catégorie. On peut le forcer avec `type: "graph"`, par exemple pour un projet DevOps qui doit surtout montrer des visuels.
 
+**Pages par catégorie**
+
+Quand on choisit une catégorie dans les filtres puis « Découvrir les projets », on arrive sur sa page dédiée : `#projets/devops` (terminal et déploiements), `#projets/cyber` (centre de sécurité et rapports), `#projets/ux` (études de cas) ou `#projets/graph` (mosaïque éditoriale, alimentée par les images des galeries). Elles sont construites par `assets/js/category-view.js`, qui contient aussi leurs textes de présentation. Un nouveau projet y apparaît automatiquement selon sa catégorie.
+
 **Autres réglages**
 
 - `featured: true` met le projet en avant dans le carrousel « Tous » et dans le diaporama de l'accueil (`hero` donne son sous-titre).

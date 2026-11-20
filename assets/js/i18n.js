@@ -77,6 +77,10 @@
     "Visuels à venir": "Visuals coming soon", "Les images de ce projet seront ajoutées prochainement.": "Images for this project will be added soon.",
     "Palette de couleurs": "Colour palette", "Typographies": "Typefaces", "La démarche": "The approach", "Maquettes et écrans": "Mockups and screens", "Captures": "Screenshots",
     "Autres projets": "Other projects", "Projet introuvable": "Project not found", "Ce projet n'existe pas ou a été déplacé.": "This project does not exist or has been moved.",
+    // pages par catégorie
+    "projets": "projects", "outils": "tools", "au quotidien": "every day", "Surveillance active": "Live monitoring", "rapports": "reports",
+    "Réf.": "Ref.", "Type": "Type", "Outils": "Tools", "Études de cas": "Case studies", "Lire l'étude de cas": "Read the case study",
+    "Portfolio": "Portfolio", "Explorer aussi": "Explore also", "Autres catégories": "Other categories",
     // page
     "Silvere Tchoudji | DevOps, Cloud & Cybersécurité": "Silvere Tchoudji | DevOps, Cloud & Cybersecurity",
     "Portfolio de Silvere Tchoudji, ingénieur DevOps & Cloud, cybersécurité et UX design.": "Portfolio of Silvere Tchoudji, DevOps & Cloud engineer, cybersecurity and UX design."
